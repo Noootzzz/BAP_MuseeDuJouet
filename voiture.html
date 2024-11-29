@@ -9,6 +9,12 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
@@ -19,6 +25,8 @@
       font-family: "Paytone One", sans-serif;
       font-weight: 400;
       font-style: normal;
+      margin: 0;
+      padding: 0;
     }
     .swiper-button-prev,
     .swiper-button-next {
@@ -26,7 +34,7 @@
     }
     .swiper-button-prev::after,
     .swiper-button-next::after {
-      display: none; /* Masque les flèches automatiques */
+      display: none;
     }
     img {
       max-width: 100%;
@@ -42,7 +50,7 @@
       class="fa-solid fa-house text-5xl m-5 mb-0 text-blue-800 absolute top-5 left-5"
     ></i>
     <div
-      class="Conteneur flex flex-wrap flex-col items-center justify-between content-between py-12 h-full w-full overflow-auto lg:py-8"
+      class="Conteneur flex flex-col items-center justify-between content-between py-12 h-full w-full overflow-auto lg:py-8"
     >
       <div
         id="highlighted-slide"
@@ -85,8 +93,10 @@
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform"
         />
       </div>
-
-      <div class="swiper w-full flex flex-col h-1/2 align-middle pt-8 px-8">
+      <h3 class="text-2xl p-4 text-blue-800">
+        Choisis la couleur de ta voiture
+      </h3>
+      <div class="swiper w-full flex flex-col h-1/2 align-middle px-8">
         <div class="swiper-wrapper">
           <!-- choix -->
           <div
@@ -293,6 +303,7 @@
             />
           </div>
         </div>
+
         <div
           class="bootom-bar flex flex-wrap items-end justify-between content-between"
         >

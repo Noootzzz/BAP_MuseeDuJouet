@@ -17,15 +17,11 @@ function updateHighlightedSlide(swiperInstance) {
 
   const highlightedSlide = document.getElementById("highlighted-slide");
 
-  // Récupérer toutes les images de la diapositive centrale
   const centerSlideImages = centerSlide.querySelectorAll("img");
 
-  // Si des images existent dans la diapositive centrale
   if (centerSlideImages.length > 0) {
-    // Vider les images existantes dans la section mise en avant
     highlightedSlide.innerHTML = "";
 
-    // Ajouter les images de la diapositive centrale dans la section mise en avant
     centerSlideImages.forEach((image) => {
       const newImage = document.createElement("img");
       newImage.src = image.src;
@@ -39,7 +35,6 @@ function updateHighlightedSlide(swiperInstance) {
         "scale-150"
       );
 
-      // Ajouter l'image dans le conteneur "highlighted-slide"
       highlightedSlide.appendChild(newImage);
     });
 
@@ -47,7 +42,7 @@ function updateHighlightedSlide(swiperInstance) {
     const backgroundColor = computedStyle.backgroundColor;
 
     if (backgroundColor) {
-      highlightedSlide.style.backgroundColor = backgroundColor; // Appliquer la couleur de fond
+      highlightedSlide.style.backgroundColor = backgroundColor;
     }
   }
 }
@@ -56,8 +51,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const swiper = new Swiper(".swiper", {
     slidesPerView: 3,
     centeredSlides: true,
-    loop: true, // Loop activé
-    loopedSlides: 5, // Nombre correct de slides à dupliquer pour le loop
+    loop: true,
+    loopedSlides: 5,
     spaceBetween: 20,
     navigation: {
       nextEl: ".swiper-button-next",
