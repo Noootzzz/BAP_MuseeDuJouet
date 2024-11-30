@@ -46,25 +46,3 @@ function updateHighlightedSlide(swiperInstance) {
     }
   }
 }
-
-window.addEventListener("DOMContentLoaded", () => {
-  const swiper = new Swiper(".swiper", {
-    slidesPerView: 3,
-    centeredSlides: true,
-    loop: true,
-    loopedSlides: 5,
-    spaceBetween: 20,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-
-  swiper.on("slideChange", () => {
-    updateSlideSize(swiper);
-    updateHighlightedSlide(swiper);
-  });
-
-  updateSlideSize(swiper);
-  updateHighlightedSlide(swiper);
-});

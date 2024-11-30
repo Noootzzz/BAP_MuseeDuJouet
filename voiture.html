@@ -366,6 +366,29 @@
     </div>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const swiper = new Swiper(".swiper", {
+          slidesPerView: 3,
+          centeredSlides: true,
+          loop: true,
+          loopedSlides: 5,
+          spaceBetween: 20,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+
+        swiper.on("slideChange", () => {
+          updateSlideSize(swiper);
+          updateHighlightedSlide(swiper);
+        });
+
+        updateSlideSize(swiper);
+        updateHighlightedSlide(swiper);
+      });
+    </script>
     <script src="./src/javascript/swiper.js"></script>
   </body>
 </html>
