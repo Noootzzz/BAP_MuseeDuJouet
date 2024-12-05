@@ -14,6 +14,11 @@ function updateSlideSize(swiperInstance) {
 function updateHighlightedSlide(swiperInstance) {
   const activeIndex = swiperInstance.activeIndex;
   const centerSlide = swiperInstance.slides[activeIndex];
+  index_active = swiperInstance.slides[activeIndex].getAttribute(
+    "data-swiper-slide-index"
+  );
+  document.getElementById("couleur_input").value = index_active;
+  console.log(index_active);
 
   const highlightedSlide = document.getElementById("highlighted-slide");
 

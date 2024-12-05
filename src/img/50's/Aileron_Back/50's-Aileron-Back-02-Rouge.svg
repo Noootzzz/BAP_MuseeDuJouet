@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Aileron_Supra_Int._Rouge" data-name="Aileron Supra Int. Rouge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 2000">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #951f31;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M1253,762c1.95-5.67,5.26-13.57,11-22,10.49-15.4,22.9-23.48,30-28,29.9-19.03,62.46-20.8,63-19,.08.27-.61.52-6,4,0,0-2.38,1.54-9,6-19.13,12.9-31,28-31,28-5.27,6.71-12.73,17.89-18,34-13.33-1-26.67-2-40-3Z"/>
+</svg>
