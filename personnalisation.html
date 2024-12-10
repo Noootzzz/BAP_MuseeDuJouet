@@ -105,8 +105,51 @@
       <h3 class="text-2xl p-4 text-blue-800 w-full text-center">
         Personnalise ton volant
       </h3>
+      <!-- template slide -->
+      <div
+        style="display: none"
+        id="swiper-slide-template"
+        class="relative text-white text-xl font-bold rounded-lg h-48 transition-transform duration-300 overflow-hidden"
+      >
+        <img
+          id="pneus_gauche"
+          src="./src/img/50's/Pneus/50's-Pneus-Gauche.png"
+          alt="Image pneus gauche"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        />
+        <img
+          src=""
+          alt="Image Base Back"
+          id="Base_Back"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-125"
+        />
+        <img
+          id="volant"
+          src="./src/img/50's/Volant/50's-Volant-01.png"
+          alt="Image Volant"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        />
+        <img
+          src=""
+          alt="Image Base Front"
+          id="Base_Front"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-125"
+        />
+        <img
+          id="pneus_droit"
+          src="./src/img/50's/Pneus/50's-Pneus-Droit.png"
+          alt="Image Pneus Droit"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        />
+        <img
+          id="jante"
+          src="./src/img/50's/Jantes/50's-Jantes-01.png"
+          alt="Image Jante"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        />
+      </div>
       <div class="swiper w-full flex flex-col align-middle px-8">
-        <div class="swiper-wrapper">
+        <div id="swiper-wrapper" class="swiper-wrapper">
           <!-- choix -->
           <div
             class="swiper-slide relative bg-blue-500 text-white text-xl font-bold rounded-lg h-48 transition-transform duration-300"
@@ -417,6 +460,28 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
+        const crea_slide = () => {
+          const container = document.getElementById("swiper-wrapper");
+          const template = document.getElementById("swiper-slide-template");
+
+          container.innerHTML = "";
+          let i = 0;
+          couleur_tab.forEach((couleur) => {
+            const VoitureCard = template.cloneNode(true);
+            VoitureCard.style.display = "block";
+            VoitureCard.querySelector(
+              "#Base_Back"
+            ).src = `./src/img/50\'s/Base_Back/50\'s-Base-Si\ège-${couleur}.png`;
+            VoitureCard.querySelector(
+              "#Base_Front"
+            ).src = `./src/img/50\'s/Base_Front/50\'s-Base-${couleur}.png`;
+            VoitureCard.classList.add(`bg-${couleur_tab_E[i]}-500`);
+            VoitureCard.classList.add("swiper-slide");
+            i++;
+            container.appendChild(VoitureCard);
+          });
+        };
+        crea_slide();
         const swiper = new Swiper(".swiper", {
           slidesPerView: 3,
           centeredSlides: true,
