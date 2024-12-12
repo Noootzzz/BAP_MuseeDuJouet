@@ -11,7 +11,8 @@ const phrases = [
 
 couleur_tab_aileron = couleur_tab;
 
-function crea_perso(step, annee) {
+function crea_perso(step, annee, couleur = 0) {
+  document.getElementById("perso_phrase").innerHTML = phrases[step - 1];
   const container = document.getElementById("swiper-wrapper");
   const template = document
     .getElementById("swiper-wrapper")
@@ -34,6 +35,22 @@ function crea_perso(step, annee) {
         VoitureCard.querySelector(
           "#jante"
         ).src = `./src/img/${annee}/Jantes/Low-50's-Jantes-${jante[i]}.webp`;
+      } else if (step == 4 && i <= aileron.length - 1) {
+        if (i != 2) {
+          VoitureCard.querySelector(
+            "#aileron_back"
+          ).src = `./src/img/${annee}/Aileron_Back/Low-50's-Aileron-Back-${aileron[i]}-${couleur_tab_aileron[couleur]}.webp`;
+          VoitureCard.querySelector(
+            "#aileron_front"
+          ).src = `./src/img/${annee}/Aileron_Front/Low-50's-Aileron-Front-${aileron[i]}-${couleur_tab_aileron[couleur]}.webp`;
+        } else {
+          VoitureCard.querySelector(
+            "#aileron_back"
+          ).src = `./src/img/${annee}/Aileron_Back/Low-50's-Aileron-Back-03.webp`;
+          VoitureCard.querySelector(
+            "#aileron_front"
+          ).src = `./src/img/${annee}/Aileron_Front/Low-50's-Aileron-Front-03.webp`;
+        }
       }
       VoitureCard.classList.add(`bg-${couleur_tab_E[i]}-500`);
       VoitureCard.classList.add("swiper-slide");

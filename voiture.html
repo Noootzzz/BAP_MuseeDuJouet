@@ -152,7 +152,8 @@
         const url = new URLSearchParams(window.location.search);
         const annee = url.get("annee");
         document.getElementById("annee_input").value = annee;
-        crea_template(annee);
+        let step = 0;
+        crea_template(step, annee);
         crea_slide(annee);
         const swiper = new Swiper(".swiper", {
           slidesPerView: 3,
