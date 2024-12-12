@@ -11,40 +11,85 @@ function updateSlideSize(swiperInstance) {
   });
 }
 
-function updateHighlightedSlide(swiperInstance) {
+function inputUpdate(activeIndex, step) {
+  if (step == 0) {
+    document.getElementById("couleurVoiture_input").value = activeIndex;
+  } else if (step == 1) {
+    document.getElementById("volant_input").value = `0${activeIndex}`;
+  } else if (step == 2) {
+    document.getElementById("motif_input").value = `0${activeIndex + 1}`;
+  } else if (step == 3) {
+    document.getElementById("jante_input").value = `0${activeIndex}`;
+  }
+}
+
+function updateHighlightedSlide(swiperInstance, step) {
   const activeIndex = swiperInstance.activeIndex;
   const centerSlide = swiperInstance.slides[activeIndex];
   index_active = swiperInstance.slides[activeIndex].getAttribute(
     "data-swiper-slide-index"
   );
-
+  inputUpdate(index_active, step);
   const highlightedSlide = document.getElementById("highlighted-slide");
 
   const baseBackImage = centerSlide.querySelector("#Base_Back");
   const baseFrontImage = centerSlide.querySelector("#Base_Front");
+  const volant = centerSlide.querySelector("#volant");
+  const motif = centerSlide.querySelector("#motif");
+  const jante = centerSlide.querySelector("#jante");
+  const aileron = centerSlide.querySelector("#aileron");
 
-  if (baseBackImage && baseFrontImage) {
-    highlightedSlide.querySelector("#Base_Back").src = baseBackImage.src;
+  highlightedSlide.querySelector("#Base_Back").src = baseBackImage.src;
+  highlightedSlide.querySelector("#Base_Front").src = baseFrontImage.src;
+  highlightedSlide.querySelector("#volant").src = volant.src;
+
+  if (motif != undefined) {
+    highlightedSlide.querySelector("#motif").src = motif.src;
+    highlightedSlide.querySelector("#motif").classList.add("scale-150");
   }
 
-  if (baseFrontImage) {
-    highlightedSlide.querySelector("#Base_Front").src = baseFrontImage.src;
+  if (aileron != undefined) {
+    highlightedSlide.querySelector("#aileron").src = jante.src;
+    highlightedSlide.querySelector("#aileron").classList.add("scale-150");
   }
   const bgColor = getComputedStyle(centerSlide).backgroundColor;
   highlightedSlide.style.backgroundColor = bgColor;
-
-  return index_active;
 }
 
-const couleur_tab_E = ["blue", "yellow", "pink", "red", "green"];
-const couleur_tab = ["Bleue", "Jaune", "Rose", "Rouge", "Vert"];
+let couleur_tab_E = ["blue", "yellow", "pink", "red", "green"];
+let couleur_tab = ["Bleue", "Jaune", "Rose", "Rouge", "Vert"];
 
-const crea_slide = (annee = "50's") => {
+const crea_slide = (
+  annee = "50's",
+  couleur = undefined,
+  volant = "01",
+  motif = undefined,
+  jante = "01",
+  aileron = undefined,
+  couleur_aileron = undefined
+) => {
   const container = document.getElementById("swiper-wrapper");
   const template = document.getElementById("swiper-slide-template");
 
   let i = 0;
   container.innerHTML = "";
+
+  if (couleur != undefined) {
+    couleur_tab = [
+      couleur_tab[couleur],
+      couleur_tab[couleur],
+      couleur_tab[couleur],
+      couleur_tab[couleur],
+      couleur_tab[couleur],
+    ];
+    couleur_tab_E = [
+      couleur_tab_E[couleur],
+      couleur_tab_E[couleur],
+      couleur_tab_E[couleur],
+      couleur_tab_E[couleur],
+      couleur_tab_E[couleur],
+    ];
+  }
   couleur_tab.forEach((couleur) => {
     const VoitureCard = template.cloneNode(true);
     VoitureCard.style.display = "block";
@@ -53,8 +98,47 @@ const crea_slide = (annee = "50's") => {
     ).src = `./src/img/${annee}/Base_Back/Low-50\'s-Base-Si\ège-${couleur}.webp`;
 
     VoitureCard.querySelector(
+      "#volant"
+    ).src = `./src/img/${annee}/Volant/Low-50's-Volant-${volant}.webp`;
+
+    VoitureCard.querySelector(
       "#Base_Front"
     ).src = `./src/img/${annee}/Base_Front/Low-50\'s-Base-${couleur}.webp`;
+
+    VoitureCard.querySelector(
+      "#jante"
+    ).src = `./src/img/${annee}/Jantes/Low-50's-Jantes-${jante}.webp`;
+
+    if (motif !== undefined && motif !== "undefined") {
+      VoitureCard.innerHTML += `
+      <img
+        id="motif"
+        src="./src/img/${annee}/Motif/Low-50's-Motif-${motif}.webp"
+        alt="Image motif"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      />`;
+    }
+
+    if (
+      aileron !== undefined &&
+      couleur_aileron !== undefined &&
+      aileron !== "undefined" &&
+      couleur_aileron !== "undefined"
+    ) {
+      VoitureCard.innerHTML += `
+      <img
+        id="aileron_front"
+        src="./src/img/${annee}/Aileron_Front/Low-50's-Aileron-Front-${aileron}-${couleur_aileron}.webp"
+        alt="Image aileron front"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      />
+      <img
+        id="aileron_back"
+        src="./src/img/${annee}/Aileron_Back/Low-50's-Aileron-Back-${aileron}-${couleur_aileron}.webp"
+        alt="Image aileron back"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      />`;
+    }
 
     VoitureCard.classList.add(`bg-${couleur_tab_E[i]}-500`);
     VoitureCard.classList.add("swiper-slide");
@@ -68,11 +152,13 @@ const crea_template = (
   volant = "01",
   motif = undefined,
   jante = "01",
-  couleur = "bleue",
+  couleur = 0,
   aileron = undefined,
-  couleur_aileron = undefined
+  couleur_aileron = undefined,
+  step
 ) => {
-  document.getElementById("swiper-slide-template").innerHTML = `
+  if (step == 0) {
+    document.getElementById("swiper-slide-template").innerHTML = `
           <img
             id="pneus_gauche"
             src="./src/img/${annee}/Pneu/Low-50's-Pneus-Gauche.webp"
@@ -81,7 +167,7 @@ const crea_template = (
           />
           <img
             id="Base_Back"
-            src="./src/img/${annee}/Base_Back/Low-50's-Base-Siège-${couleur}.webp"
+            src="./src/img/${annee}/Base_Back/Low-50's-Base-Siège-${couleur_tab[couleur]}.webp"
             alt="Image Base Back"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
@@ -93,7 +179,7 @@ const crea_template = (
           />
           <img
             id="Base_Front"
-            src="./src/img/${annee}/Base_Front/Low-50's-Base-${couleur}.webp"
+            src="./src/img/${annee}/Base_Front/Low-50's-Base-${couleur_tab[couleur]}.webp"
             alt="Image Base Front"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
@@ -108,30 +194,102 @@ const crea_template = (
             src="./src/img/${annee}/Jantes/Low-50's-Jantes-${jante}.webp"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />`;
+  } else if (step == 1) {
+    document.getElementById("swiper-slide-template").innerHTML = `
+          <img
+            id="pneus_gauche"
+            src="./src/img/50's/Pneu/Low-50's-Pneus-Gauche.webp"
+            alt="Image pneus gauche"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
           />
-        </div>`;
-  if (motif) {
-    document.getElementById("swiper-slide-template").innerHTML += `
-      <img
-        id="motif"
-        src="./src/img/${annee}/Motif\Low-50's-Motif-${motif}.webp"
-        alt="Image Jante"
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-      />`;
-  }
-  if (aileron && couleur_aileron) {
-    document.getElementById("swiper-slide-template").innerHTML += `      
-      <img
-        id="aileron_front"
-        src="./src/img/${annee}/Aileron_Front\Low-50's-Aileron-Front-${aileron}-${couleur_aileron}.webp"
-        alt="Image Jante"
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-      />
-      <img
-        id="aileron_back"
-        src="./src/img/${annee}/Aileron_Back\Low-50's-Aileron-Back-${aileron}-${couleur_aileron}.webp"
-        alt="Image Jante"
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-      />`;
+          <img
+            id="Base_Back"
+            src="./src/img/50's/Base_Back/Low-50's-Base-Siège-Bleue.webp"
+            alt="Image Base Back"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+          />
+          <img
+            id="volant"
+            src="./src/img/50's/Volant/Low-50's-Volant-01.webp"
+            alt="Image Volant"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+          />
+          <img
+            id="Base_Front"
+            src="./src/img/50's/Base_Front/Low-50's-Base-Bleue.webp"
+            alt="Image Base Front"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+          />
+          <img
+            id="motif"
+            src=""
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+          <img
+            id="pneus_droit"
+            src="./src/img/50's/Pneu/Low-50's-Pneus-Droit.webp"
+            alt="Image Pneus Droit"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+          />
+          <img
+            id="jante"
+            src="./src/img/50's/Jantes/Low-50's-Jantes-01.webp"
+            alt="Image Jante"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+          />`;
+  } else if (step == 2) {
+    document.getElementById("swiper-slide-template").innerHTML = `
+          <img
+            id="pneus_gauche"
+            src="./src/img/50's/Pneu/Low-50's-Pneus-Gauche.webp"
+            alt="Image pneus gauche"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+          />
+          <img
+            id="Base_Back"
+            src="./src/img/50's/Base_Back/Low-50's-Base-Siège-Bleue.webp"
+            alt="Image Base Back"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+          />
+          <img
+            id="volant"
+            src="./src/img/50's/Volant/Low-50's-Volant-01.webp"
+            alt="Image Volant"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+          />
+          <img
+            id="aileron_front"
+            src=""
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+          <img
+            id="aileron_back"
+            src=""
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+          <img
+            id="Base_Front"
+            src="./src/img/50's/Base_Front/Low-50's-Base-Bleue.webp"
+            alt="Image Base Front"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+          />
+          <img
+            id="motif"
+            src=""
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+          <img
+            id="pneus_droit"
+            src="./src/img/50's/Pneu/Low-50's-Pneus-Droit.webp"
+            alt="Image Pneus Droit"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+          />
+          <img
+            id="jante"
+            src="./src/img/50's/Jantes/Low-50's-Jantes-01.webp"
+            alt="Image Jante"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+          />`;
   }
 };

@@ -104,44 +104,7 @@
         style="display: none"
         id="swiper-slide-template"
         class="relative text-white text-xl font-bold rounded-lg h-48 transition-transform duration-300 overflow-hidden"
-      >
-        <img
-          id="pneus_gauche"
-          src="./src/img/50's/Pneu/Low-50's-Pneus-Gauche.webp"
-          alt="Image pneus gauche"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        />
-        <img
-          id="Base_Back"
-          src="./src/img/50's/Base_Back/Low-50's-Base-Siège-Bleue.webp"
-          alt="Image Base Back"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        />
-        <img
-          id="volant"
-          src="./src/img/50's/Volant/Low-50's-Volant-01.webp"
-          alt="Image Volant"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        />
-        <img
-          id="Base_Front"
-          src="./src/img/50's/Base_Front/Low-50's-Base-Bleue.webp"
-          alt="Image Base Front"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        />
-        <img
-          id="pneus_droit"
-          src="./src/img/50's/Pneu/Low-50's-Pneus-Droit.webp"
-          alt="Image Pneus Droit"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        />
-        <img
-          id="jante"
-          src="./src/img/50's/Jantes/Low-50's-Jantes-01.webp"
-          alt="Image Jante"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        />
-      </div>
+      ></div>
       <div class="swiper w-full flex flex-col h-1/2 align-middle px-8">
         <div id="swiper-wrapper" class="swiper-wrapper h-fit pb-4"></div>
 
@@ -166,11 +129,13 @@
           </div>
           <form action="./personnalisation.html" method="get">
             <input
-              id="couleur_input"
-              name="couleur_input"
+              id="couleurVoiture_input"
+              name="couleurVoiture"
               type="hidden"
               value="0"
             />
+            <input id="annee_input" name="annee" type="hidden" value="0" />
+            <input id="step" name="step" type="hidden" value="1" />
             <input
               type="submit"
               class="text-white bg-blue-800 rounded-full text-lg h-12 w-32 flex items-center justify-center"
@@ -186,8 +151,9 @@
       document.addEventListener("DOMContentLoaded", () => {
         const url = new URLSearchParams(window.location.search);
         const annee = url.get("annee");
+        document.getElementById("annee_input").value = annee;
         crea_template(annee);
-        crea_slide();
+        crea_slide(annee);
         const swiper = new Swiper(".swiper", {
           slidesPerView: 3,
           centeredSlides: true,
@@ -207,12 +173,12 @@
         });
 
         swiper.on("slideChange", () => {
-          updateHighlightedSlide(swiper);
+          updateHighlightedSlide(swiper, 0);
           updateSlideSize(swiper);
         });
 
         updateSlideSize(swiper);
-        updateHighlightedSlide(swiper);
+        updateHighlightedSlide(swiper, 0);
       });
     </script>
     <script src="./src/javascript/swiper.js"></script>

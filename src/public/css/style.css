@@ -784,6 +784,10 @@ video {
   justify-content: space-around;
 }
 
+.overflow-auto {
+  overflow: auto;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
