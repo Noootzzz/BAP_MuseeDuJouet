@@ -60,7 +60,7 @@ function updateHighlightedSlide(swiperInstance, step) {
     highlightedSlide.querySelector("#motif").classList.add("scale-150");
   }
 
-  if (aileron != undefined) {
+  if (aileron_front != undefined && aileron_back != undefined) {
     highlightedSlide.querySelector("#aileron_front").src = aileron_front.src;
     highlightedSlide.querySelector("#aileron_front").classList.add("scale-150");
     highlightedSlide.querySelector("#aileron_back").src = aileron_back.src;

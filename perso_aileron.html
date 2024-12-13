@@ -244,7 +244,7 @@
           document.getElementById("aileron_input").value = aileron;
         }
 
-        crea_template(step, annee);
+        crea_template(step_prev, annee);
         crea_slide(
           annee,
           couleur_voiture,
@@ -254,7 +254,7 @@
           aileron,
           couleurAileron
         );
-        crea_perso(step_prev, annee);
+        crea_perso(step_prev - 1, annee);
         const swiper = new Swiper(".swiper", {
           slidesPerView: 3,
           centeredSlides: true,

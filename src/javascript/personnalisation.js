@@ -12,6 +12,7 @@ const phrases = [
 couleur_tab_aileron = couleur_tab;
 
 function crea_perso(step, annee, couleur = 0) {
+  console.log(step);
   document.getElementById("perso_phrase").innerHTML = phrases[step - 1];
   const container = document.getElementById("swiper-wrapper");
   const template = document
