@@ -8,8 +8,7 @@
       src="https://kit.fontawesome.com/ec35368b02.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
@@ -17,8 +16,9 @@
     />
     <link
       rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
+    <link rel="stylesheet" href="./src/public/css/style.css" />
   </head>
   <style>
     * {
@@ -41,303 +41,75 @@
       max-height: 100%;
       object-fit: contain;
     }
+    #highlighted-slide,
+    #highlighted-slide img {
+      transition: none !important;
+      animation: none !important;
+    }
   </style>
 
-  <body
-    class="relative bg-gradient-to-b from-blue-200 to-blue-50 h-screen overflow-auto"
-  >
+  <body class="relative bg-gradient-to-b from-blue-200 to-blue-50 h-screen">
     <i
       class="fa-solid fa-house text-5xl m-5 mb-0 text-blue-800 absolute top-5 left-5"
     ></i>
     <div
-      class="Conteneur flex flex-col items-center justify-between content-between py-12 h-full w-full overflow-auto lg:py-8"
+      class="Conteneur flex flex-col items-center justify-between content-between py-4 h-full w-full lg:py-8"
     >
       <div
         id="highlighted-slide"
         class="relative bg-blue-500 text-white text-xl font-bold rounded-lg transition-transform duration-300 w-1/2 h-1/2"
       >
         <img
-          src=""
-          alt="Image Highlight Pneu Gauche"
-          id="Aileron_Back"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-125"
+          id="pneus_gauche"
+          src="./src/img/50's/Pneu/Low-50's-Pneus-Gauche.webp"
+          alt="Image pneus gauche"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
         <img
-          src=""
-          alt="Image Highlight Aileron Back"
-          id="Aileron_Back"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-125"
+          id="Base_Back"
+          src="./src/img/50's/Base_Back/Low-50's-Base-Siège-Bleue.webp"
+          alt="Image Base Back"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
         <img
-          src=""
-          alt="Image Highlight Aileron Front"
-          id="Aileron_Back"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-125"
+          id="volant"
+          src="./src/img/50's/Volant/Low-50's-Volant-01.webp"
+          alt="Image Volant"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
         <img
-          src=""
-          alt="Image Highlight Siege"
-          id="Aileron_Back"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-125"
+          id="Base_Front"
+          src="./src/img/50's/Base_Front/Low-50's-Base-Bleue.webp"
+          alt="Image Base Front"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
         <img
-          src=""
-          alt="Image Highlight Volant"
-          id="Aileron_Back"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-125"
+          id="pneus_droit"
+          src="./src/img/50's/Pneu/Low-50's-Pneus-Droit.webp"
+          alt="Image Pneus Droit"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
         <img
-          src=""
-          alt="Image Highlight Pneu droit"
-          id="Aileron_Back"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-125"
-        />
-        <img
-          src=""
-          alt="Image Highlight Jantes"
-          id="Aileron_Back"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform"
+          id="jante"
+          src="./src/img/50's/Jantes/Low-50's-Jantes-01.webp"
+          alt="Image Jante"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
       </div>
       <h3 class="text-2xl p-4 text-blue-800">
         Choisis la couleur de ta voiture
       </h3>
+      <!-- template slide -->
+      <div
+        style="display: none"
+        id="swiper-slide-template"
+        class="relative text-white text-xl font-bold rounded-lg h-48 transition-transform duration-300 overflow-hidden"
+      ></div>
       <div class="swiper w-full flex flex-col h-1/2 align-middle px-8">
-        <div class="swiper-wrapper">
-          <!-- choix -->
-          <div
-            class="swiper-slide relative bg-blue-500 text-white text-xl font-bold rounded-lg h-48 transition-transform duration-300"
-          >
-            <img
-              src="./src/img/50's/Aileron_Back/50's-Aileron-Back-01-Bleu.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Pneus/50's-Pneus-Gauche.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Aileron_Front/50's-Aileron-Front-01-Bleu.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Base_Back/50's-Base-Siège-Bleue.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Volant/50's-Volant-01.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Base_Front/50's-Base-Bleue.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Pneus/50's-Pneus-Droit.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Jantes/50's-Jantes-01.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-          </div>
-
-          <!-- choix -->
-          <div
-            class="swiper-slide relative bg-yellow-500 text-white text-xl font-bold rounded-lg h-48 transition-transform duration-300 overflow-hidden"
-          >
-            <img
-              src="./src/img/50's/Pneus/50's-Pneus-Gauche.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Aileron_Back/50's-Aileron-Back-01-Jaune.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Aileron_Front/50's-Aileron-Front-01-Jaune.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Base_Back/50's-Base-Siège-Jaune.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Volant/50's-Volant-01.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Base_Front/50's-Base-Jaune.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-
-            <img
-              src="./src/img/50's/Pneus/50's-Pneus-Droit.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Jantes/50's-Jantes-01.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-          </div>
-
-          <!-- choix -->
-          <div
-            class="swiper-slide relative bg-pink-500 text-white text-xl font-bold rounded-lg h-48 transition-transform duration-300 overflow-hidden"
-          >
-            <img
-              src="./src/img/50's/Pneus/50's-Pneus-Gauche.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Aileron_Back/50's-Aileron-Back-01-Rose.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Aileron_Front/50's-Aileron-Front-01-Rose.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Base_Back/50's-Base-Siège-Rose.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Volant/50's-Volant-01.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Base_Front/50's-Base-Rose.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Pneus/50's-Pneus-Droit.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Jantes/50's-Jantes-01.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-          </div>
-
-          <!-- choix -->
-          <div
-            class="swiper-slide relative bg-red-500 text-white text-xl font-bold rounded-lg h-48 transition-transform duration-300 overflow-hidden"
-          >
-            <img
-              src="./src/img/50's/Pneus/50's-Pneus-Gauche.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Aileron_Back/50's-Aileron-Back-01-Rouge.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Aileron_Front/50's-Aileron-Front-01-Rouge.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Base_Back/50's-Base-Siège-Rouge.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Volant/50's-Volant-01.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Base_Front/50's-Base-Rouge.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Pneus/50's-Pneus-Droit.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Jantes/50's-Jantes-01.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-          </div>
-
-          <!-- choix -->
-          <div
-            class="swiper-slide relative bg-green-500 text-white text-xl font-bold rounded-lg h-48 transition-transform duration-300 overflow-hidden"
-          >
-            <img
-              src="./src/img/50's/Pneus/50's-Pneus-Gauche.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Aileron_Back/50's-Aileron-Back-01-Vert.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Aileron_Front/50's-Aileron-Front-01-Vert.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Base_Back/50's-Base-Siège-Vert.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Volant/50's-Volant-01.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Base_Front/50's-Base-Vert.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Pneus/50's-Pneus-Droit.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-            <img
-              src="./src/img/50's/Jantes/50's-Jantes-01.png"
-              alt=""
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            />
-          </div>
-        </div>
+        <div id="swiper-wrapper" class="swiper-wrapper h-fit pb-4"></div>
 
         <div
-          class="bootom-bar flex flex-wrap items-end justify-between content-between"
+          class="bootom-bar flex flex-wrap items-end justify-between content-between h-1/3"
         >
           <a
             href="#"
@@ -355,25 +127,46 @@
           >
             <i class="fa-solid fa-arrow-right"></i>
           </div>
-          <a
-            href="#"
-            class="text-white bg-blue-800 rounded-full text-lg h-12 w-32 flex items-center justify-center"
-          >
-            Suivant
-          </a>
+          <form action="./personnalisation.html" method="get">
+            <input
+              id="couleurVoiture_input"
+              name="couleurVoiture"
+              type="hidden"
+              value="0"
+            />
+            <input id="annee_input" name="annee" type="hidden" value="0" />
+            <input id="step" name="step" type="hidden" value="1" />
+            <input
+              type="submit"
+              class="text-white bg-blue-800 rounded-full text-lg h-12 w-32 flex items-center justify-center"
+              value="Suivant"
+            />
+          </form>
         </div>
       </div>
     </div>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-      window.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("DOMContentLoaded", () => {
+        const url = new URLSearchParams(window.location.search);
+        const annee = url.get("annee");
+        document.getElementById("annee_input").value = annee;
+        let step = 0;
+        crea_template(step, annee);
+        crea_slide(annee);
         const swiper = new Swiper(".swiper", {
           slidesPerView: 3,
           centeredSlides: true,
           loop: true,
-          loopedSlides: 5,
+          loopedSlides: couleur_tab.length,
           spaceBetween: 20,
+          preloadImages: false,
+          lazy: {
+            loadOnTransitionStart: true,
+            loadPrevNext: true,
+          },
+          speed: 300,
           navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
@@ -381,12 +174,12 @@
         });
 
         swiper.on("slideChange", () => {
+          updateHighlightedSlide(swiper, 0);
           updateSlideSize(swiper);
-          updateHighlightedSlide(swiper);
         });
 
         updateSlideSize(swiper);
-        updateHighlightedSlide(swiper);
+        updateHighlightedSlide(swiper, 0);
       });
     </script>
     <script src="./src/javascript/swiper.js"></script>
