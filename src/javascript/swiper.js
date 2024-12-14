@@ -12,7 +12,9 @@ function updateSlideSize(swiperInstance) {
 }
 
 let ancien = 0;
-document.getElementById("couleurAileron_input").value = 0;
+if (document.getElementById("couleurAileron_input")) {
+  document.getElementById("couleurAileron_input").value = 0;
+}
 let lastCycleValue = null;
 function inputUpdate(activeIndex, step, swiper = undefined) {
   // Calcul du cycle (1, 2, 3)
@@ -46,15 +48,12 @@ function inputUpdate(activeIndex, step, swiper = undefined) {
   } else if (step === 6) {
     // bg
     document.getElementById("bg_input").value = `0${cycleValue}`;
-
-    console.log(cycleValue);
     if (cycleValue != 3) {
       // Si l'aileron est 3, on met "undefined" pour la couleur de l'aileron
       ancien = document.getElementById("couleurFond_input").value;
       document.getElementById("couleurFond_input").value = "undefined";
     } else {
       document.getElementById("couleurFond_input").value = 0;
-      console.log(0);
       change_bg(swiper, "Bleue", 0);
     }
   }

@@ -52,7 +52,6 @@ const change_bg = (swiperInstance, couleur, index_couleur) => {
   } else if (bgsrc.includes("-02")) {
     type_bg = 2; // Type 2 si le lien contient "-02-"
   }
-  console.log(type_bg); // Vérification du type de fond trouvé
 
   // Changement de l'image de fond selon le type (1, 2 ou 3)
   if (type_bg === 1 || type_bg === 2) {
