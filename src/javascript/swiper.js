@@ -11,25 +11,52 @@ function updateSlideSize(swiperInstance) {
   });
 }
 
-function inputUpdate(activeIndex, step) {
-  if (step == 0) {
+let ancien = 0;
+document.getElementById("couleurAileron_input").value = 0;
+let lastCycleValue = null;
+function inputUpdate(activeIndex, step, swiper = undefined) {
+  // Calcul du cycle (1, 2, 3)
+  const cycleValue = (activeIndex % 3) + 1;
+
+  if (step === 0) {
+    // Couleur voiture (pas de cycle)
     document.getElementById("couleurVoiture_input").value = activeIndex;
-  } else if (step == 1) {
-    document.getElementById("volant_input").value = `0${
-      ((activeIndex - 1) % 3) + 2
-    }`;
-  } else if (step == 2) {
-    document.getElementById("motif_input").value = `0${
-      ((activeIndex - 1) % 3) + 2
-    }`;
-  } else if (step == 3) {
-    document.getElementById("jante_input").value = `0${
-      ((activeIndex - 1) % 3) + 2
-    }`;
-  } else if (step == 4) {
-    document.getElementById("aileron_input").value = `0${
-      ((activeIndex - 1) % 3) + 2
-    }`;
+  } else if (step === 1) {
+    // Volant
+    document.getElementById("volant_input").value = `0${cycleValue}`;
+  } else if (step === 2) {
+    // Motif
+    document.getElementById("motif_input").value = `0${cycleValue}`;
+  } else if (step === 3) {
+    // Jante
+    document.getElementById("jante_input").value = `0${cycleValue}`;
+  } else if (step === 5) {
+    // Aileron
+    document.getElementById("aileron_input").value = `0${cycleValue}`;
+
+    if (cycleValue === 3 && lastCycleValue != 3) {
+      // Si l'aileron est 3, on met "undefined" pour la couleur de l'aileron
+      ancien = document.getElementById("couleurAileron_input").value;
+      document.getElementById("couleurAileron_input").value = "undefined";
+    } else {
+      // Sinon, on restaure l'ancienne valeur
+      document.getElementById("couleurAileron_input").value = ancien;
+      change_aileron(swiper, "Bleue", 0);
+    }
+  } else if (step === 6) {
+    // bg
+    document.getElementById("bg_input").value = `0${cycleValue}`;
+
+    console.log(cycleValue);
+    if (cycleValue != 3) {
+      // Si l'aileron est 3, on met "undefined" pour la couleur de l'aileron
+      ancien = document.getElementById("couleurFond_input").value;
+      document.getElementById("couleurFond_input").value = "undefined";
+    } else {
+      document.getElementById("couleurFond_input").value = 0;
+      console.log(0);
+      change_bg(swiper, "Bleue", 0);
+    }
   }
 }
 
@@ -39,9 +66,10 @@ function updateHighlightedSlide(swiperInstance, step) {
   index_active = swiperInstance.slides[activeIndex].getAttribute(
     "data-swiper-slide-index"
   );
-  inputUpdate(index_active, step);
+  inputUpdate(index_active, step, swiperInstance);
   const highlightedSlide = document.getElementById("highlighted-slide");
 
+  const bg = centerSlide.querySelector("#bg");
   const baseBackImage = centerSlide.querySelector("#Base_Back");
   const baseFrontImage = centerSlide.querySelector("#Base_Front");
   const volant = centerSlide.querySelector("#volant");
@@ -55,6 +83,10 @@ function updateHighlightedSlide(swiperInstance, step) {
   highlightedSlide.querySelector("#volant").src = volant.src;
   highlightedSlide.querySelector("#jante").src = jante.src;
 
+  if (bg.style.backgroundImage != "") {
+    highlightedSlide.querySelector("#bg").style.backgroundImage =
+      bg.style.backgroundImage;
+  }
   if (motif != undefined) {
     highlightedSlide.querySelector("#motif").src = motif.src;
     highlightedSlide.querySelector("#motif").classList.add("scale-150");
@@ -87,7 +119,7 @@ const crea_slide = (
 
   let i = 0;
   container.innerHTML = "";
-
+  let couleur_aileron_tab = couleur_tab;
   if (couleur != undefined) {
     couleur_tab = [
       couleur_tab[couleur],
@@ -136,13 +168,12 @@ const crea_slide = (
       aileron !== null &&
       couleur_aileron !== null
     ) {
-      console.log("nbionoi");
       VoitureCard.querySelector(
         "#aileron_front"
-      ).src = `./src/img/${annee}/Aileron_Front/Low-50's-Aileron-Front-${aileron}-${couleur_aileron}.webp`;
+      ).src = `./src/img/${annee}/Aileron_Front/Low-50's-Aileron-Front-${aileron}-${couleur_aileron_tab[couleur_aileron]}.webp`;
       VoitureCard.querySelector(
         "#aileron_back"
-      ).src = `./src/img/${annee}/Aileron_Back/Low-50's-Aileron-Back-${aileron}-${couleur_aileron}.webp`;
+      ).src = `./src/img/${annee}/Aileron_Back/Low-50's-Aileron-Back-${aileron}-${couleur_aileron_tab[couleur_aileron]}.webp`;
     }
 
     VoitureCard.classList.add(`bg-${couleur_tab_E[i]}-500`);
@@ -164,6 +195,7 @@ const crea_template = (
 ) => {
   if (step <= 1) {
     document.getElementById("swiper-slide-template").innerHTML = `
+    <div id="bg">
           <img
             id="pneus_gauche"
             src="./src/img/${annee}/Pneu/Low-50's-Pneus-Gauche.webp"
@@ -199,10 +231,10 @@ const crea_template = (
             src="./src/img/${annee}/Jantes/Low-50's-Jantes-${jante}.webp"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />`;
+          /></div> `;
   } else if (step <= 3) {
     document.getElementById("swiper-slide-template").innerHTML = `
-          <img
+  <div id="bg">     <img
             id="pneus_gauche"
             src="./src/img/${annee}/Pneu/Low-50's-Pneus-Gauche.webp"
             alt="Image pneus gauche"
@@ -242,10 +274,10 @@ const crea_template = (
             src="./src/img/${annee}/Jantes/Low-50's-Jantes-${jante}.webp"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />`;
-  } else if (step == 5) {
+          /></div> `;
+  } else if (step >= 5) {
     document.getElementById("swiper-slide-template").innerHTML = `
-          <img
+   <div id="bg">      <img
             id="pneus_gauche"
             src="./src/img/${annee}/Pneu/Low-50's-Pneus-Gauche.webp"
             alt="Image pneus gauche"
@@ -295,6 +327,6 @@ const crea_template = (
             src="./src/img/${annee}/Jantes/Low-50's-Jantes-${jante}.webp"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />`;
+          /></div> `;
   }
 };

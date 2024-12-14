@@ -42,6 +42,13 @@
       max-height: 100%;
       object-fit: contain;
     }
+    #bg {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
   </style>
   <body
     class="relative bg-gradient-to-b from-blue-200 to-blue-50 min-h-fit h-screen w-screen lg:overflow-y-scroll"
@@ -53,57 +60,59 @@
           id="highlighted-slide"
           class="relative bg-blue-500 text-white text-xl font-bold rounded-lg transition-transform duration-300 w-1/2 h-full"
         >
-          <img
-            id="pneus_gauche"
-            src="./src/img/50's/Pneu/Low-50's-Pneus-Gauche.webp"
-            alt="Image pneus gauche"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
-          />
-          <img
-            id="Base_Back"
-            src="./src/img/50's/Base_Back/Low-50's-Base-Siège-Bleue.webp"
-            alt="Image Base Back"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
-          />
-          <img
-            id="volant"
-            src="./src/img/50's/Volant/Low-50's-Volant-01.webp"
-            alt="Image Volant"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
-          />
-          <img
-            id="aileron_front"
-            src=""
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
-          <img
-            id="aileron_back"
-            src=""
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
-          <img
-            id="Base_Front"
-            src="./src/img/50's/Base_Front/Low-50's-Base-Bleue.webp"
-            alt="Image Base Front"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
-          />
-          <img
-            id="motif"
-            src=""
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
-          <img
-            id="pneus_droit"
-            src="./src/img/50's/Pneu/Low-50's-Pneus-Droit.webp"
-            alt="Image Pneus Droit"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
-          />
-          <img
-            id="jante"
-            src="./src/img/50's/Jantes/Low-50's-Jantes-01.webp"
-            alt="Image Jante"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
-          />
+          <div id="bg">
+            <img
+              id="pneus_gauche"
+              src="./src/img/50's/Pneu/Low-50's-Pneus-Gauche.webp"
+              alt="Image pneus gauche"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+            />
+            <img
+              id="Base_Back"
+              src="./src/img/50's/Base_Back/Low-50's-Base-Siège-Bleue.webp"
+              alt="Image Base Back"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+            />
+            <img
+              id="volant"
+              src="./src/img/50's/Volant/Low-50's-Volant-01.webp"
+              alt="Image Volant"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+            />
+            <img
+              id="aileron_front"
+              src=""
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            />
+            <img
+              id="aileron_back"
+              src=""
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            />
+            <img
+              id="Base_Front"
+              src="./src/img/50's/Base_Front/Low-50's-Base-Bleue.webp"
+              alt="Image Base Front"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+            />
+            <img
+              id="motif"
+              src=""
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            />
+            <img
+              id="pneus_droit"
+              src="./src/img/50's/Pneu/Low-50's-Pneus-Droit.webp"
+              alt="Image Pneus Droit"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+            />
+            <img
+              id="jante"
+              src="./src/img/50's/Jantes/Low-50's-Jantes-01.webp"
+              alt="Image Jante"
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+            />
+          </div>
         </div>
 
         <div
@@ -187,6 +196,13 @@
             <input
               id="aileron_input"
               name="aileron"
+              type="hidden"
+              value="undefined"
+            />
+            <input id="bg_input" name="bg" type="hidden" value="01" />
+            <input
+              id="couleurFond_input"
+              name="couleurFond"
               type="hidden"
               value="undefined"
             />
@@ -286,22 +302,15 @@
         const rouge_btn = document.getElementById("rouge");
         const jaune_btn = document.getElementById("jaune");
         const vert_btn = document.getElementById("vert");
-        change_aileron(swiper, "Bleue", 0);
-        bleu_btn.addEventListener("click", () =>
-          change_aileron(swiper, "Bleue", 0)
-        );
-        rose_btn.addEventListener("click", () =>
-          change_aileron(swiper, "Rose", 2)
-        );
+        bleu_btn.addEventListener("click", () => change_bg(swiper, "Bleue", 0));
+        rose_btn.addEventListener("click", () => change_bg(swiper, "Rose", 2));
         rouge_btn.addEventListener("click", () =>
-          change_aileron(swiper, "Rouge", 3)
+          change_bg(swiper, "Rouge", 3)
         );
         jaune_btn.addEventListener("click", () =>
-          change_aileron(swiper, "Jaune", 1)
+          change_bg(swiper, "Jaune", 1)
         );
-        vert_btn.addEventListener("click", () =>
-          change_aileron(swiper, "Vert", 4)
-        );
+        vert_btn.addEventListener("click", () => change_bg(swiper, "Vert", 4));
       });
     </script>
     <script src="./src/javascript/swiper.js"></script>
