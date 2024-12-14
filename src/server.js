@@ -17,15 +17,15 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-app.use("/images", express.static(path.join(__dirname, "public/images")));
+app.use(express.static(path.join(__dirname, "../")));
 
 app.get("/", (req, res) => {
-  res.send("Serveur de personnalisation de voiture opérationnel");
+  res.sendFile(path.join(__dirname, "../", "index.html"));
 });
 
 app.get("/elements/:category", (req, res) => {
   const category = req.params.category;
-  const directoryPath = path.join(__dirname, "public/images", category);
+  const directoryPath = path.join(__dirname, "img", category);
 
   fs.readdir(directoryPath, (err, files) => {
     if (err) {
@@ -37,14 +37,49 @@ app.get("/elements/:category", (req, res) => {
   });
 });
 
-app.post("/upload", upload.single("carImage"), (req, res) => {
-  if (!req.file) {
+app.post("/upload", express.json({ limit: "100mb" }), (req, res) => {
+  const image = req.body.image;
+  const name = req.body.name;
+
+  console.log("Image reçue:");
+  console.log("Nom reçu:", name);
+  const saveDirectory = path.join(__dirname, "saved_images");
+
+  if (!fs.existsSync(saveDirectory)) {
+    console.log("dossier creer");
+    fs.mkdirSync(saveDirectory, { recursive: true });
+  }
+
+  if (!image) {
     return res.status(400).json({ message: "Aucune image envoyée." });
   }
-  res.json({
-    message: "Image sauvegardée avec succès !",
-    filename: req.file.filename,
-  });
+
+  if (!image.startsWith("data:image/png;base64,")) {
+    return res
+      .status(400)
+      .json({ message: "Image non valide ou format incorrect." });
+  }
+
+  const base64Data = image.replace(/^data:image\/png;base64,/, "");
+  const filename = Date.now() + "_" + name + "-carImage.png";
+
+  fs.writeFile(
+    path.join(__dirname, "saved_images", filename),
+    base64Data,
+    "base64",
+    (err) => {
+      if (err) {
+        console.error("Erreur lors de l'enregistrement de l'image:", err); // Log d'erreur détaillé
+        return res
+          .status(500)
+          .json({ message: "Erreur lors de l'enregistrement de l'image." });
+      }
+      res.json({
+        message: "Image sauvegardée avec succès !",
+        filename: filename,
+      });
+    }
+  );
 });
 
 app.get("/gallery", (req, res) => {
@@ -60,49 +95,40 @@ app.get("/gallery", (req, res) => {
   });
 });
 
-app.post("/combine", async (req, res) => {
-  const { images, width, height } = req.body; // Liste des images et dimensions de l'image finale
+// Fonction pour récupérer tous les chemins d'images (y compris dans les sous-dossiers)
+function getImagesFromDirectory(dirPath, baseUrl = "") {
+  let fileList = [];
+  const files = fs.readdirSync(dirPath);
 
-  if (!images || images.length === 0) {
-    return res.status(400).json({ message: "Aucune image fournie." });
-  }
+  files.forEach((file) => {
+    const filePath = path.join(dirPath, file); // Chemin complet du fichier
+    const stat = fs.statSync(filePath);
 
-  try {
-    const canvas = createCanvas(width || 800, height || 600);
-    const ctx = canvas.getContext("2d");
-
-    // Charger et dessiner chaque image sur le canvas
-    for (const imageName of images) {
-      const imagePath = path.join(__dirname, "public/images", imageName);
-      if (!fs.existsSync(imagePath)) {
-        return res
-          .status(404)
-          .json({ message: `Image non trouvée : ${imageName}` });
-      }
-
-      const image = await loadImage(imagePath);
-      ctx.drawImage(image, 0, 0, canvas.width, canvas.height); // Ajustement des images
+    if (stat.isDirectory()) {
+      // Si c'est un sous-dossier, on appelle la fonction récursivement
+      fileList = fileList.concat(
+        getImagesFromDirectory(filePath, path.join(baseUrl, file)) // Ajoute le nom du sous-dossier dans le chemin relatif
+      );
+    } else if (file.match(/\.(webp)$/i)) {
+      // Si c'est une image webp, on l'ajoute à la liste
+      fileList.push(path.join(baseUrl, file)); // Le chemin relatif est utilisé ici
     }
+  });
 
-    // Sauvegarder l'image finale
-    const outputFilename = `combined-${Date.now()}.png`;
-    const outputPath = path.join(__dirname, "saved_images", outputFilename);
+  return fileList;
+}
 
-    const out = fs.createWriteStream(outputPath);
-    const stream = canvas.createPNGStream();
-    stream.pipe(out);
+// API pour récupérer la liste des images
+app.get("/api/images", (req, res) => {
+  const imageDirectory = path.join(__dirname, "img"); // Dossier d'images principal
+  console.log(`Chemin du répertoire d'images : ${imageDirectory}`);
 
-    out.on("finish", () => {
-      res.json({
-        message: "Image combinée créée avec succès !",
-        filename: outputFilename,
-      });
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Erreur lors de la création de l'image." });
-  }
+  const images = getImagesFromDirectory(imageDirectory); // Liste des images
+  console.log(`Images trouvées : ${JSON.stringify(images)}`);
+
+  res.json(images); // Retourne la liste des chemins relatifs
 });
+
 // Serv Start
 app.listen(PORT, () => {
   console.log(`Serveur lancé sur le port ${PORT}`);

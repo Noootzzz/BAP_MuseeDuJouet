@@ -171,7 +171,7 @@
           >
             <i class="fa-solid fa-arrow-right"></i>
           </div>
-          <form action="./perso_fond.html" method="get">
+          <form action="./name.html" method="get">
             <input
               id="couleurVoiture_input"
               name="couleurVoiture"
@@ -277,11 +277,8 @@
           loop: true,
           loopedSlides: couleur_tab.length,
           spaceBetween: 20,
-          preloadImages: false,
-          lazy: {
-            loadOnTransitionStart: true,
-            loadPrevNext: true,
-          },
+          preloadImages: true,
+          lazy: false,
           speed: 300,
           navigation: {
             nextEl: ".swiper-button-next",

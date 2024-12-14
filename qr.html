@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choix de la couleur de voiture</title>
+    <script
+      src="https://kit.fontawesome.com/ec35368b02.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <canvas id="carCanvas" style="display: none"></canvas>
+    <div class="h-screen w-screen bg-gradient-to-b from-blue-200 to-blue-50">
+      <header></header>
+      <main class="flex flex-col items-center pt-[3rem]">
+        <div class="h-[24rem] w-[36rem] bg-black"></div>
+        <button class="h-10 w-20 rounded-xl bg-blue-500 text-white mt-[3rem]">
+          Continuer
+        </button>
+      </main>
+      <footer class="mt-[3rem]">
+        <button class="h-7 w-16 rounded-xl bg-blue-500 text-white">
+          Retour
+        </button>
+      </footer>
+    </div>
+  </body>
+  <script>
+    let couleur_tab = ["Bleue", "Jaune", "Rose", "Rouge", "Vert"];
+    const url = new URLSearchParams(window.location.search);
+    const couleur_voiture = url.get("couleurVoiture");
+    const annee = url.get("annee");
+    const volant = url.get("volant") ? url.get("volant") : "01";
+    const motif = url.get("motif");
+    const jante = url.get("jante") ? url.get("jante") : "01";
+    const couleurAileron = url.get("couleurAileron");
+    const aileron = url.get("aileron");
+    const bg = url.get("bg");
+    const bg_color = url.get("couleurFond");
+    const name = url.get("name");
+
+    function drawCombinedImage() {
+      const canvas = document.getElementById("carCanvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = 500;
+      canvas.height = 500;
+
+      ctx.fillStyle = "#FFFFFF";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const dx = (canvas.width - 500) / 2;
+      const dy = (canvas.height - 500) / 2;
+
+      const bgImageUrl =
+        bg_color == "undefined"
+          ? `./src/img/${annee}/Fond/Low-50's-Fond-${bg}.webp`
+          : `./src/img/${annee}/Fond/Low-50's-Fond-${bg}-${couleur_tab[bg_color]}.webp`;
+      const PneuGaucheUrl = `./src/img/${annee}/Pneu/Low-50's-Pneus-Gauche.webp`;
+      const BaseBackUrl = `./src/img/${annee}/Base_Back/Low-50's-Base-Siège-${couleur_tab[couleur_voiture]}.webp`;
+      const VolantUrl = `./src/img/${annee}/Volant/Low-50's-Volant-${volant}.webp`;
+      const AileronBackUrl =
+        couleurAileron == "undefined"
+          ? `./src/img/${annee}/Aileron_Back/Low-50's-Aileron-Back-03.webp`
+          : `./src/img/${annee}/Aileron_Back/Low-50's-Aileron-Back-${aileron}-${couleur_tab[couleurAileron]}.webp`;
+      const AileronFrontUrl =
+        couleurAileron == "undefined"
+          ? `./src/img/${annee}/Aileron_Front/Low-50's-Aileron-Front-03.webp`
+          : `./src/img/${annee}/Aileron_Front/Low-50's-Aileron-Front-${aileron}-${couleur_tab[couleurAileron]}.webp`;
+      const BaseFrontUrl = `./src/img/${annee}/Base_Front/Low-50's-Base-${couleur_tab[couleur_voiture]}.webp`;
+      const MotifUrl = `./src/img/${annee}/Motif/Low-50's-Motif-${motif}.webp`;
+      const PneuDroitUrl = `./src/img/${annee}/Pneu/Low-50's-Pneus-Droit.webp`;
+      const JanteUrl = `./src/img/${annee}/Jantes/Low-50's-Jantes-${jante}.webp`;
+
+      const bgImage = new Image();
+      const PneuGaucheImage = new Image();
+      const BaseBackImage = new Image();
+      const VolantImage = new Image();
+      const AileronBackImage = new Image();
+      const AileronFrontImage = new Image();
+      const BaseFrontImage = new Image();
+      const MotifImage = new Image();
+      const PneuDroitImage = new Image();
+      const JanteImage = new Image();
+
+      const images = {
+        bgImage: new Image(),
+        PneuGaucheImage: new Image(),
+        BaseBackImage: new Image(),
+        VolantImage: new Image(),
+        AileronBackImage: new Image(),
+        AileronFrontImage: new Image(),
+        BaseFrontImage: new Image(),
+        MotifImage: new Image(),
+        PneuDroitImage: new Image(),
+        JanteImage: new Image(),
+      };
+
+      let loadedImages = 0;
+      const totalImages = Object.keys(images).length;
+
+      // Charge chaque image
+      images.bgImage.src = bgImageUrl;
+      images.PneuGaucheImage.src = PneuGaucheUrl;
+      images.BaseBackImage.src = BaseBackUrl;
+      images.VolantImage.src = VolantUrl;
+      images.AileronBackImage.src = AileronBackUrl;
+      images.AileronFrontImage.src = AileronFrontUrl;
+      images.BaseFrontImage.src = BaseFrontUrl;
+      images.MotifImage.src = MotifUrl;
+      images.PneuDroitImage.src = PneuDroitUrl;
+      images.JanteImage.src = JanteUrl;
+
+      // Fonction de dessin lorsque toutes les images sont chargées
+      function onAllImagesLoaded() {
+        ctx.drawImage(images.bgImage, dx, dy, canvas.width, canvas.height);
+        ctx.drawImage(
+          images.PneuGaucheImage,
+          dx,
+          dy,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(
+          images.BaseBackImage,
+          dx,
+          dy,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(images.VolantImage, dx, dy, canvas.width, canvas.height);
+        ctx.drawImage(
+          images.AileronFrontImage,
+          dx,
+          dy,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(
+          images.AileronBackImage,
+          dx,
+          dy,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(
+          images.BaseFrontImage,
+          dx,
+          dy,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(images.MotifImage, dx, dy, canvas.width, canvas.height);
+        ctx.drawImage(
+          images.PneuDroitImage,
+          dx,
+          dy,
+          canvas.width,
+          canvas.height
+        );
+        ctx.drawImage(images.JanteImage, dx, dy, canvas.width, canvas.height);
+        saveCanvasToServer();
+      }
+
+      // Vérifie que toutes les images sont chargées
+      Object.values(images).forEach((img) => {
+        img.onload = function () {
+          loadedImages++;
+          if (loadedImages === totalImages) {
+            onAllImagesLoaded();
+          }
+        };
+      });
+    }
+
+    function saveCanvasToServer() {
+      const canvas = document.getElementById("carCanvas");
+      const imageData = canvas.toDataURL("image/png"); // Ou "image/jpeg" si nécessaire
+      if (!imageData) {
+        console.error("Erreur : imageData est vide.");
+        return;
+      }
+
+      fetch("/upload", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Le bon type pour envoyer du JSON
+        },
+        body: JSON.stringify({ image: imageData, name: name }), // Image envoyée en Base64
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Image sauvegardée avec succès:", data);
+        })
+        .catch((error) => {
+          console.error("Erreur lors de la sauvegarde de l'image:", error);
+        });
+    }
+
+    drawCombinedImage();
+  </script>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choix de la couleur de voiture</title>
+    <script
+      src="https://kit.fontawesome.com/ec35368b02.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <div class="bg-gradient-to-b from-blue-200 to-blue-50 h-screen">
+      <header>
+        <i
+          class="fa-solid fa-house text-5xl m-5 mb-0 text-blue-800 absolute top-5 left-5"
+        ></i>
+      </header>
+      <main class="flex flex-col items-center h-5/6 pt-[3rem]">
+        <div class="w-[36rem] h-[24rem] bg-black"></div>
+        <p class="text-blue-500 font-bold text-xl">
+          Ecrit ton prénom pour récupérer ta voiture
+        </p>
+        <form action="./qr.html" method="get">
+          <input
+            id="couleurVoiture_input"
+            name="couleurVoiture"
+            type="hidden"
+            value="0"
+          />
+          <input id="annee_input" name="annee" type="hidden" value="0" />
+          <input id="volant_input" name="volant" type="hidden" value="01" />
+          <input
+            id="motif_input"
+            name="motif"
+            type="hidden"
+            value="undefined"
+          />
+          <input id="jante_input" name="jante" type="hidden" value="01" />
+          <input
+            id="couleurAileron_input"
+            name="couleurAileron"
+            type="hidden"
+            value="0"
+          />
+          <input
+            id="aileron_input"
+            name="aileron"
+            type="hidden"
+            value="undefined"
+          />
+          <input id="bg_input" name="bg" type="hidden" value="01" />
+          <input
+            id="couleurFond_input"
+            name="couleurFond"
+            type="hidden"
+            value="undefined"
+          />
+          <input id="step" name="step" type="hidden" value="0" />
+          <input type="text" id="name_input" name="name" />
+          <input
+            type="submit"
+            class="text-white bg-blue-500 rounded-xl w-20 h-10"
+            value="Continuer"
+          />
+        </form>
+      </main>
+      <footer class="h-1/6">
+        <button class="text-white bg-blue-500 rounded-xl w-16 h-7">
+          Retour
+        </button>
+      </footer>
+    </div>
+  </body>
+
+  <script>
+    const url = new URLSearchParams(window.location.search);
+    const couleur_voiture = url.get("couleurVoiture");
+    const annee = url.get("annee");
+    const volant = url.get("volant") ? url.get("volant") : "01";
+    const motif = url.get("motif");
+    const jante = url.get("jante") ? url.get("jante") : "01";
+    const couleurAileron = url.get("couleurAileron");
+    const aileron = url.get("aileron");
+    const bg = url.get("bg");
+    const bg_color = url.get("couleurFond");
+
+    let step = url.get("step");
+    let step_prev = 0;
+    if (step !== undefined && step !== null) {
+      step_prev = Number(step);
+      step = Number(step) + 1;
+      document.getElementById("step").value = step;
+    }
+    if (couleur_voiture) {
+      document.getElementById("couleurVoiture_input").value = couleur_voiture;
+    }
+
+    if (annee) {
+      document.getElementById("annee_input").value = annee;
+    }
+    if (volant) {
+      document.getElementById("volant_input").value = volant;
+    }
+    if (motif) {
+      document.getElementById("motif_input").value = motif;
+    }
+    if (jante) {
+      document.getElementById("jante_input").value = jante;
+    }
+    if (couleurAileron) {
+      document.getElementById("couleurAileron_input").value = couleurAileron;
+    }
+    if (aileron) {
+      document.getElementById("aileron_input").value = aileron;
+    }
+  </script>
+</html>
