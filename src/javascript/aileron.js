@@ -20,19 +20,19 @@ const change_aileron = (swiperInstance, couleur, index_couleur) => {
   if (type_aileron === 1 || type_aileron === 2) {
     centerSlide.querySelector(
       "#aileron_front"
-    ).src = `src/img/50's/Aileron_Front/Low-50's-Aileron-Front-0${type_aileron}-${couleur}.webp`;
+    ).src = `src/img/50's/Aileron_Front/50's-Aileron-Front-0${type_aileron}-${couleur}.png`;
     centerSlide.querySelector(
       "#aileron_back"
-    ).src = `src/img/50's/Aileron_Back/Low-50's-Aileron-Back-0${type_aileron}-${couleur}.webp`;
+    ).src = `src/img/50's/Aileron_Back/50's-Aileron-Back-0${type_aileron}-${couleur}.png`;
     document.getElementById("couleurAileron_input").value = `${index_couleur}`;
   } else {
     // Si c'est le type 3, on ne change pas la couleur
     centerSlide.querySelector(
       "#aileron_front"
-    ).src = `src/img/50's/Aileron_Front/Low-50's-Aileron-Front-03.webp`;
+    ).src = `src/img/50's/Aileron_Front/50's-Aileron-Front-03.png`;
     centerSlide.querySelector(
       "#aileron_back"
-    ).src = `src/img/50's/Aileron_Back/Low-50's-Aileron-Back-03.webp`;
+    ).src = `src/img/50's/Aileron_Back/50's-Aileron-Back-03.png`;
     document.getElementById("couleurAileron_input").value = `${"undefined"}`;
   }
 
@@ -57,12 +57,12 @@ const change_bg = (swiperInstance, couleur, index_couleur) => {
   if (type_bg === 1 || type_bg === 2) {
     centerSlide.querySelector(
       "#bg"
-    ).style.backgroundImage = `url('src/img/50\'s/Fond/Low-50\'s-Fond-0${type_bg}.webp')`;
+    ).style.backgroundImage = `url('src/img/Fond/Fond-0${type_bg}.png')`;
     document.getElementById("couleurFond_input").value = "undefined";
   } else if (type_bg === 3) {
     centerSlide.querySelector(
       "#bg"
-    ).style.backgroundImage = `url("src/img/50's/Fond/Low-50's-Fond-03-${couleur}.webp")`;
+    ).style.backgroundImage = `url("src/img/Fond/Fond-03-${couleur}.png")`;
     document.getElementById("couleurFond_input").value = `${index_couleur}`;
   }
   updateHighlightedSlide(swiperInstance, 4);

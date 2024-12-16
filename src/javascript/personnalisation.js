@@ -28,41 +28,41 @@ function crea_perso(step, annee, couleur = 0) {
       if (step == 1 && i <= volant.length - 1) {
         VoitureCard.querySelector(
           "#volant"
-        ).src = `./src/img/${annee}/Volant/Low-50's-Volant-${volant[i]}.webp`;
+        ).src = `./src/img/${annee}/Volant/50's-Volant-${volant[i]}-Blanc.png`;
       } else if (step == 2 && i <= motif.length - 1) {
         VoitureCard.querySelector(
           "#motif"
-        ).src = `./src/img/${annee}/Motif/Low-50's-Motif-${motif[i]}.webp`;
+        ).src = `./src/img/${annee}/Motif/50's-Motif-${motif[i]}.png`;
       } else if (step == 3 && i <= jante.length - 1) {
         VoitureCard.querySelector(
           "#jante"
-        ).src = `./src/img/${annee}/Jantes/Low-50's-Jantes-${jante[i]}.webp`;
+        ).src = `./src/img/${annee}/Jantes/50's-Jantes-${jante[i]}.png`;
       } else if (step == 4 && i <= aileron.length - 1) {
         if (i != 2) {
           VoitureCard.querySelector(
             "#aileron_back"
-          ).src = `./src/img/${annee}/Aileron_Back/Low-50's-Aileron-Back-${aileron[i]}-${couleur_tab_aileron[couleur]}.webp`;
+          ).src = `./src/img/${annee}/Aileron_Back/50's-Aileron-Back-${aileron[i]}-${couleur_tab_aileron[couleur]}.png`;
           VoitureCard.querySelector(
             "#aileron_front"
-          ).src = `./src/img/${annee}/Aileron_Front/Low-50's-Aileron-Front-${aileron[i]}-${couleur_tab_aileron[couleur]}.webp`;
+          ).src = `./src/img/${annee}/Aileron_Front/50's-Aileron-Front-${aileron[i]}-${couleur_tab_aileron[couleur]}.png`;
         } else {
           VoitureCard.querySelector(
             "#aileron_back"
-          ).src = `./src/img/${annee}/Aileron_Back/Low-50's-Aileron-Back-03.webp`;
+          ).src = `./src/img/${annee}/Aileron_Back/50's-Aileron-Back-03.png`;
           VoitureCard.querySelector(
             "#aileron_front"
-          ).src = `./src/img/${annee}/Aileron_Front/Low-50's-Aileron-Front-03.webp`;
+          ).src = `./src/img/${annee}/Aileron_Front/50's-Aileron-Front-03.png`;
         }
       }
       if (step == 5 && i <= fond.length - 1) {
         if (i != 2) {
           VoitureCard.querySelector(
             "#bg"
-          ).style.backgroundImage = `url("src/img/50's/Fond/Low-50's-Fond-${fond[i]}.webp")`;
+          ).style.backgroundImage = `url("src/img/Fond/Fond-${fond[i]}.png")`;
         } else {
           VoitureCard.querySelector(
             "#bg"
-          ).style.backgroundImage = `url("src/img/50's/Fond/Low-50's-Fond-03-${couleur_tab[couleur]}.webp")`;
+          ).style.backgroundImage = `url("src/img/Fond/Fond-03-${couleur_tab[couleur]}.png")`;
         }
         VoitureCard.classList.remove(`bg-${couleur_tab_E[i]}-500`);
       } else {

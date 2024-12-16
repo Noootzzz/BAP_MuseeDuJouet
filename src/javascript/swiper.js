@@ -1,3 +1,7 @@
+function go_back(event) {
+  event.preventDefault();
+}
+
 function updateSlideSize(swiperInstance) {
   swiperInstance.slides.forEach((slide, index) => {
     slide.style.transform = "scale(0.9)";
@@ -140,24 +144,24 @@ const crea_slide = (
     VoitureCard.style.display = "block";
     VoitureCard.querySelector(
       "#Base_Back"
-    ).src = `./src/img/${annee}/Base_Back/Low-50\'s-Base-Si\ège-${couleur}.webp`;
+    ).src = `./src/img/${annee}/Base_Back/50\'s-Base-Si\ège-${couleur}.png`;
 
     VoitureCard.querySelector(
       "#volant"
-    ).src = `./src/img/${annee}/Volant/Low-50's-Volant-${volant}.webp`;
+    ).src = `./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png`;
 
     VoitureCard.querySelector(
       "#Base_Front"
-    ).src = `./src/img/${annee}/Base_Front/Low-50\'s-Base-${couleur}.webp`;
+    ).src = `./src/img/${annee}/Base_Front/50\'s-Base-${couleur}.png`;
 
     VoitureCard.querySelector(
       "#jante"
-    ).src = `./src/img/${annee}/Jantes/Low-50's-Jantes-${jante}.webp`;
+    ).src = `./src/img/${annee}/Jantes/50's-Jantes-${jante}.png`;
 
     if (motif !== undefined && motif !== "undefined" && motif !== null) {
       VoitureCard.querySelector(
         "#motif"
-      ).src = `./src/img/${annee}/Motif/Low-50's-Motif-${motif}.webp`;
+      ).src = `./src/img/${annee}/Motif/50's-Motif-${motif}.png`;
     }
     if (
       aileron !== undefined &&
@@ -169,10 +173,10 @@ const crea_slide = (
     ) {
       VoitureCard.querySelector(
         "#aileron_front"
-      ).src = `./src/img/${annee}/Aileron_Front/Low-50's-Aileron-Front-${aileron}-${couleur_aileron_tab[couleur_aileron]}.webp`;
+      ).src = `./src/img/${annee}/Aileron_Front/50's-Aileron-Front-${aileron}-${couleur_aileron_tab[couleur_aileron]}.png`;
       VoitureCard.querySelector(
         "#aileron_back"
-      ).src = `./src/img/${annee}/Aileron_Back/Low-50's-Aileron-Back-${aileron}-${couleur_aileron_tab[couleur_aileron]}.webp`;
+      ).src = `./src/img/${annee}/Aileron_Back/50's-Aileron-Back-${aileron}-${couleur_aileron_tab[couleur_aileron]}.png`;
     }
 
     VoitureCard.classList.add(`bg-${couleur_tab_E[i]}-500`);
@@ -197,37 +201,37 @@ const crea_template = (
     <div id="bg">
           <img
             id="pneus_gauche"
-            src="./src/img/${annee}/Pneu/Low-50's-Pneus-Gauche.webp"
+            src="./src/img/${annee}/Pneu/50's-Pneus-Gauche.png"
             alt="Image pneus gauche"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="Base_Back"
-            src="./src/img/${annee}/Base_Back/Low-50's-Base-Siège-${couleur_tab[couleur]}.webp"
+            src="./src/img/${annee}/Base_Back/50's-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="volant"
-            src="./src/img/${annee}/Volant/Low-50's-Volant-${volant}.webp"
+            src="./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png"
             alt="Image Volant"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="Base_Front"
-            src="./src/img/${annee}/Base_Front/Low-50's-Base-${couleur_tab[couleur]}.webp"
+            src="./src/img/${annee}/Base_Front/50's-Base-${couleur_tab[couleur]}.png"
             alt="Image Base Front"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="pneus_droit"
-            src="./src/img/${annee}/Pneu/Low-50's-Pneus-Droit.webp"
+            src="./src/img/${annee}/Pneu/50's-Pneus-Droit.png"
             alt="Image Pneus Droit"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="jante"
-            src="./src/img/${annee}/Jantes/Low-50's-Jantes-${jante}.webp"
+            src="./src/img/${annee}/Jantes/50's-Jantes-${jante}.png"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           /></div> `;
@@ -235,25 +239,25 @@ const crea_template = (
     document.getElementById("swiper-slide-template").innerHTML = `
   <div id="bg">     <img
             id="pneus_gauche"
-            src="./src/img/${annee}/Pneu/Low-50's-Pneus-Gauche.webp"
+            src="./src/img/${annee}/Pneu/50's-Pneus-Gauche.png"
             alt="Image pneus gauche"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="Base_Back"
-            src="./src/img/${annee}/Base_Back/Low-50's-Base-Siège-${couleur_tab[couleur]}.webp"
+            src="./src/img/${annee}/Base_Back/50's-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="volant"
-            src="./src/img/${annee}/Volant/Low-50's-Volant-${volant}.webp"
+            src="./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png"
             alt="Image Volant"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="Base_Front"
-            src="./src/img/${annee}/Base_Front/Low-50's-Base-${couleur_tab[couleur]}.webp"
+            src="./src/img/${annee}/Base_Front/50's-Base-${couleur_tab[couleur]}.png"
             alt="Image Base Front"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
@@ -264,13 +268,13 @@ const crea_template = (
           />
           <img
             id="pneus_droit"
-            src="./src/img/${annee}/Pneu/Low-50's-Pneus-Droit.webp"
+            src="./src/img/${annee}/Pneu/50's-Pneus-Droit.png"
             alt="Image Pneus Droit"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="jante"
-            src="./src/img/${annee}/Jantes/Low-50's-Jantes-${jante}.webp"
+            src="./src/img/${annee}/Jantes/50's-Jantes-${jante}.png"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           /></div> `;
@@ -278,19 +282,19 @@ const crea_template = (
     document.getElementById("swiper-slide-template").innerHTML = `
    <div id="bg">      <img
             id="pneus_gauche"
-            src="./src/img/${annee}/Pneu/Low-50's-Pneus-Gauche.webp"
+            src="./src/img/${annee}/Pneu/50's-Pneus-Gauche.png"
             alt="Image pneus gauche"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="Base_Back"
-            src="./src/img/${annee}/Base_Back/Low-50's-Base-Siège-${couleur_tab[couleur]}.webp"
+            src="./src/img/${annee}/Base_Back/50's-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="volant"
-            src="./src/img/${annee}/Volant/Low-50's-Volant-${volant}.webp"
+            src="./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png"
             alt="Image Volant"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
@@ -306,7 +310,7 @@ const crea_template = (
           />
           <img
             id="Base_Front"
-            src="./src/img/${annee}/Base_Front/Low-50's-Base-${couleur_tab[couleur]}.webp"
+            src="./src/img/${annee}/Base_Front/50's-Base-${couleur_tab[couleur]}.png"
             alt="Image Base Front"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
@@ -317,13 +321,13 @@ const crea_template = (
           />
           <img
             id="pneus_droit"
-            src="./src/img/${annee}/Pneu/Low-50's-Pneus-Droit.webp"
+            src="./src/img/${annee}/Pneu/50's-Pneus-Droit.png"
             alt="Image Pneus Droit"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="jante"
-            src="./src/img/${annee}/Jantes/Low-50's-Jantes-${jante}.webp"
+            src="./src/img/${annee}/Jantes/50's-Jantes-${jante}.png"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           /></div> `;

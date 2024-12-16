@@ -5,45 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Choix de la couleur de voiture</title>
     <script
-        src="https://kit.fontawesome.com/ec35368b02.js"
-        crossorigin="anonymous"
+      src="https://kit.fontawesome.com/ec35368b02.js"
+      crossorigin="anonymous"
     ></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com/" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
-        rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
+      rel="stylesheet"
     />
     <link
-        rel="stylesheet"
-        href="https://unpkg.com/swiper/swiper-bundle.min.css"
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
-</head>
-<body>
+  </head>
+  <body>
     <div class="h-screen w-screen bg-gradient-to-b from-blue-200 to-blue-50">
-        <header></header>
-        <main class="flex flex-col items-center">
-          <h1 class="text-blue-500 font-bold text-2xl">Galerie</h1>
-          <div class="h-[12rem] w-[17rem] bg-black"></div>
-          <div class="flex">
-            <div class="flex flex-col">
-                <div></div>
-                <p>Prénom</p>
+      <header></header>
+      <main class="flex flex-col items-center">
+        <h1 class="text-blue-500 font-bold text-2xl">Galerie</h1>
+        <div
+          class="h-1/3 w-full flex justify-center bg-slate-500"
+          id="nouv_img"
+        >
+          <div class="flex flex-col" id="template_nouv" style="display: none">
+            <div>
+              <img
+                id="img"
+                class="h-[12rem] w-[17rem] bg-black"
+                src=""
+                alt=""
+              />
             </div>
-            <div class="flex flex-col">
-                <div></div>
-                <p>Prénom</p>
-            </div>
-            <div class="flex flex-col">
-                <div></div>
-                <p>Prénom</p>
-            </div>
+            <p id="name">Prénom</p>
           </div>
-        </main>
-        <footer>
-          <button class="h-7 w-16 rounded-xl bg-blue-500 text-white">Retour</button>
-        </footer>
-      </div>      
-</body>
+        </div>
+
+        <div
+          class="flex flex-wrap items-start justify-around w-full bg-gray-400"
+          id="container"
+        >
+          <div class="flex flex-col" id="template" style="display: none">
+            <div>
+              <img
+                id="img"
+                src=""
+                class="h-[12rem] w-[17rem] bg-black"
+                alt=""
+              />
+            </div>
+            <p id="name">Prénom</p>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <button class="h-7 w-16 rounded-xl bg-blue-500 text-white">
+          Retour
+        </button>
+      </footer>
+    </div>
+  </body>
+  <script>
+    async function fetchData() {
+      console.log("charger");
+
+      try {
+        const response = await fetch("/gallery", {
+          method: "GET",
+        });
+        const data = await response.json();
+        console.log("Données récupérées :", data);
+        display(data);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données :", error);
+      }
+    }
+
+    function display(images) {
+      let container = document.getElementById("nouv_img");
+      let template = document.getElementById("template_nouv");
+
+      container.innerHTML = "";
+      container.appendChild(template);
+
+      let i = 0;
+      images.forEach((img) => {
+        if (i != 0) {
+          container = document.getElementById("container");
+          template = document.getElementById("template");
+        }
+        const crea = template.cloneNode(true);
+        crea.style.display = "block";
+        crea.querySelector("#name").textContent = img
+          .split("_")[1]
+          .split("-")[0];
+        crea.querySelector("#img").src = `./src/saved_images/${img}`;
+        i++;
+        container.appendChild(crea);
+      });
+    }
+
+    fetchData();
+  </script>
 </html>
