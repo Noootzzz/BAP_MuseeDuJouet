@@ -72,7 +72,7 @@
           <input type="text" id="name_input" name="name" />
           <input
             type="submit"
-            class="text-white bg-blue-500 rounded-xl w-20 h-10"
+            class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-xl w-20 h-10"
             value="Continuer"
           />
         </form>
@@ -83,7 +83,7 @@
           class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-xl w-16 h-7"
         >
           Retour
-        </button>
+        </a>
       </footer>
     </div>
   </body>
@@ -134,61 +134,46 @@
     }
 
     document.getElementById("img-container").innerHTML = `
-          <img
-            src="./src/img/Fond/Fond-${bg}.png"
-            alt="Image Base Front"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg scale-150"
-          />
-          <img
-            src="./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png"
-            alt="Image Base Front"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-100"
-          />
-          <img
-            id="Base_Back"
-            src="./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur_voiture]}.png"
-            alt="Image Base Back"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
-          <img
-            id="volant"
-            src="./src/img/${annee}/Volant/${annee}-Volant-${volant}-Blanc.png"
-            alt="Image Volant"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
-          <img
-            id="aileron_back"
-            src="./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-${aileron}-${couleur_tab[couleurAileron]}.png"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
-          <img
-            id="aileron_front"
-            src="./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-${aileron}-${couleur_tab[couleurAileron]}.png"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
-          <img
-            id="Base_Front"
-            src="./src/img/${annee}/Base_Front/${annee}-Base-${couleur_tab[couleur_voiture]}.png"
-            alt="Image Base Front"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
-          <img
-            id="motif" 
-            src="./src/img/${annee}/Motif/${annee}-Motif-${motif}.png"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
-          <img
-            id="pneus_droit"
-            src="./src/img/${annee}/Pneu/${annee}-Pneus-Droit.png"
-            alt="Image Pneus Droit"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
-          <img
-            id="jante"
-            src="./src/img/${annee}/Jantes/${annee}-Jantes-${jante}.png"
-            alt="Image Jante"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
+    <img
+      src="./src/img/${annee}/Base_Front/50's-Base-${bg}.webp"
+      alt="Image Base Front"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/50's-Base-${couleur_voiture}.webp"
+      alt="Couleur voiture"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/50's-Base-${volant}.webp"
+      alt="Volant"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/50's-Base-${motif}.webp"
+      alt="Motif"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/50's-Base-${jante}.webp"
+      alt="Jante"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/50's-Base-${couleurAileron}.webp"
+      alt="Couleur aileron"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/50's-Base-${aileron}.webp"
+      alt="Aileron"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/50's-Base-${bg_color}.webp"
+      alt="Couleur fond"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
     `;
   </script>
 </html>

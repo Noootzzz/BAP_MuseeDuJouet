@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Choix de la couleur de voiture</title>
+    <title>QR Code</title>
     <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
     <script
       src="https://kit.fontawesome.com/ec35368b02.js"
@@ -27,18 +27,21 @@
       <header></header>
       <main class="flex flex-col items-center pt-[3rem]">
         <canvas id="CanvasQr"></canvas>
-
-        <button class="h-10 w-20 rounded-xl bg-blue-500 text-white mt-[3rem]">
+        <div
+          id="btn"
+          class="h-10 w-20 rounded-xl bg-gradient-to-b from-blue-500 to-blue-800 text-white mt-[3rem]"
+        >
           <a href="./galerie.html">Continuer</a>
-        </button>
+        </div>
       </main>
       <footer class="mt-[3rem]">
-        <button
-          class="h-7 w-16 rounded-xl bg-blue-500 text-white"
+        <a
+          href="#"
           onclick="history.back(); return false;"
+          class="h-7 w-16 rounded-xl bg-gradient-to-b from-blue-500 to-blue-800 text-white"
         >
           Retour
-        </button>
+        </a>
       </footer>
     </div>
   </body>
@@ -230,5 +233,9 @@
     }
 
     drawCombinedImage();
+    document.getElementById("btn").innerHTML = `
+        <a href="galerie.html?${url}">
+          Continuer
+        </a>`;
   </script>
 </html>
