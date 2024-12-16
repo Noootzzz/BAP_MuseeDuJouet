@@ -2,7 +2,7 @@ const volant = ["01", "02", "03"];
 const motif = ["01", "02", "03"];
 const jante = ["01", "02", "03"];
 const aileron = ["01", "02", "03"];
-const fond = ["01", "02", "03"];
+const fond = ["01", "02", "03", "04", "05"];
 const phrases = [
   "Personnalise ton volant",
   "Personnalise ton motif",
@@ -20,9 +20,15 @@ function crea_perso(step, annee, couleur = 0) {
     .getElementById("swiper-wrapper")
     .querySelector("div");
 
+  let limit = 3;
+  let step_limit = 2;
+  if (step == 5) {
+    limit = 5;
+    step_limit = 1;
+  }
   container.innerHTML = "";
-  for (let j = 0; j < 2; j++) {
-    for (let i = 0; i < 3; i++) {
+  for (let j = 0; j < step_limit; j++) {
+    for (let i = 0; i < limit; i++) {
       const VoitureCard = template.cloneNode(true);
       VoitureCard.style.display = "block";
       if (step == 1 && i <= volant.length - 1) {
@@ -55,15 +61,11 @@ function crea_perso(step, annee, couleur = 0) {
         }
       }
       if (step == 5 && i <= fond.length - 1) {
-        if (i != 2) {
-          VoitureCard.querySelector(
-            "#bg"
-          ).style.backgroundImage = `url("src/img/Fond/Fond-${fond[i]}.png")`;
-        } else {
-          VoitureCard.querySelector(
-            "#bg"
-          ).style.backgroundImage = `url("src/img/Fond/Fond-03-${couleur_tab[couleur]}.png")`;
-        }
+        console.log(i);
+        VoitureCard.querySelector(
+          "#bg"
+        ).style.backgroundImage = `url("src/img/Fond/Fond-${fond[i]}.png")`;
+
         VoitureCard.classList.remove(`bg-${couleur_tab_E[i]}-500`);
       } else {
         VoitureCard.classList.add(`bg-${couleur_tab_E[i]}-500`);

@@ -55,7 +55,10 @@
   >
     <i class="fa-solid fa-house text-5xl m-5 mb-0 text-blue-800"></i>
     <div class="h-full">
-      <div class="h-1/3 flex flex-wrap justify-around items-center">
+      <div
+        class="h-1/3 flex flex-wrap justify-around items-center"
+        style="display: none"
+      >
         <div
           id="highlighted-slide"
           class="relative bg-blue-500 text-white text-xl font-bold rounded-lg transition-transform duration-300 w-1/2 h-full"
@@ -114,32 +117,10 @@
             />
           </div>
         </div>
-
-        <div
-          class="flex flex-wrap align-middle justify-between h-fit w-72 rounded-lg border-blue-800 border-4 p-5"
-        >
-          <button
-            id="bleu"
-            class="bg-blue-500 h-12 w-28 mb-2 rounded-lg"
-          ></button>
-          <button
-            id="jaune"
-            class="bg-yellow-500 h-12 w-28 mb-2 rounded-lg"
-          ></button>
-          <button
-            id="rose"
-            class="bg-pink-500 h-12 w-28 mb-2 rounded-lg"
-          ></button>
-          <button
-            id="rouge"
-            class="bg-red-500 h-12 w-28 mb-2 rounded-lg"
-          ></button>
-          <button id="vert" class="bg-green-500 h-12 w-28 rounded-lg"></button>
-        </div>
       </div>
       <h3
         id="perso_phrase"
-        class="text-2xl p-4 text-blue-800 w-full text-center"
+        class="text-2xl p-10 text-blue-800 w-full text-center"
       >
         Personnalise ton volant
       </h3>
@@ -147,10 +128,10 @@
       <div
         style="display: none"
         id="swiper-slide-template"
-        class="relative text-white text-xl font-bold rounded-lg h-48 transition-transform duration-300 overflow-hidden"
+        class="relative text-white text-xl font-bold rounded-lg h-5/6 transition-transform duration-300 overflow-hidden"
       ></div>
-      <div class="swiper w-full flex flex-col h-1/2 align-middle px-8">
-        <div id="swiper-wrapper" class="swiper-wrapper h-fit pb-4"></div>
+      <div class="swiper w-11/12 flex flex-col h-full align-middle px-12">
+        <div id="swiper-wrapper" class="swiper-wrapper pb-4 h-2/3"></div>
 
         <div
           class="bootom-bar flex flex-wrap items-end justify-between content-between h-1/3"
@@ -272,7 +253,7 @@
         );
         crea_perso(step_prev - 1, annee);
         const swiper = new Swiper(".swiper", {
-          slidesPerView: 3,
+          slidesPerView: 1,
           centeredSlides: true,
           loop: true,
           loopedSlides: couleur_tab.length,
@@ -293,21 +274,6 @@
 
         updateSlideSize(swiper);
         updateHighlightedSlide(swiper, step_prev);
-
-        const bleu_btn = document.getElementById("bleu");
-        const rose_btn = document.getElementById("rose");
-        const rouge_btn = document.getElementById("rouge");
-        const jaune_btn = document.getElementById("jaune");
-        const vert_btn = document.getElementById("vert");
-        bleu_btn.addEventListener("click", () => change_bg(swiper, "Bleue", 0));
-        rose_btn.addEventListener("click", () => change_bg(swiper, "Rose", 2));
-        rouge_btn.addEventListener("click", () =>
-          change_bg(swiper, "Rouge", 3)
-        );
-        jaune_btn.addEventListener("click", () =>
-          change_bg(swiper, "Jaune", 1)
-        );
-        vert_btn.addEventListener("click", () => change_bg(swiper, "Vert", 4));
       });
     </script>
     <script src="./src/javascript/swiper.js"></script>
