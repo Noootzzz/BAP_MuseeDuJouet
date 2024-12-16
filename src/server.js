@@ -78,6 +78,7 @@ app.post("/upload", express.json({ limit: "100mb" }), (req, res) => {
         message: "Image sauvegardée avec succès !",
         filename: filename,
       });
+      return filename;
     }
   );
 });

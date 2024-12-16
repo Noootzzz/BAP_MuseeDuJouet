@@ -61,37 +61,37 @@
       >
         <img
           id="pneus_gauche"
-          src="./src/img/50's/Pneu/Low-50's-Pneus-Gauche.webp"
+          src="./src/img/50's/Pneu/50's-Pneus-Gauche.png"
           alt="Image pneus gauche"
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
         <img
           id="Base_Back"
-          src="./src/img/50's/Base_Back/Low-50's-Base-Siège-Bleue.webp"
+          src="./src/img/50's/Base_Back/50's-Base-Siège-Bleue.png"
           alt="Image Base Back"
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
         <img
           id="volant"
-          src="./src/img/50's/Volant/Low-50's-Volant-01.webp"
+          src="./src/img/50's/Volant/50's-Volant-01-Blanc.png"
           alt="Image Volant"
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
         <img
           id="Base_Front"
-          src="./src/img/50's/Base_Front/Low-50's-Base-Bleue.webp"
+          src="./src/img/50's/Base_Front/50's-Base-Bleue.png"
           alt="Image Base Front"
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
         <img
           id="pneus_droit"
-          src="./src/img/50's/Pneu/Low-50's-Pneus-Droit.webp"
+          src="./src/img/50's/Pneu/50's-Pneus-Droit.png"
           alt="Image Pneus Droit"
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
         <img
           id="jante"
-          src="./src/img/50's/Jantes/Low-50's-Jantes-01.webp"
+          src="./src/img/50's/Jantes/50's-Jantes-01.png"
           alt="Image Jante"
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
@@ -112,7 +112,8 @@
           class="bootom-bar flex flex-wrap items-end justify-between content-between h-1/3"
         >
           <a
-            href="#"
+            href="./index.html"
+            id="btn_back"
             class="text-white bg-blue-800 rounded-full text-lg h-12 w-32 flex items-center justify-center"
           >
             Retour
@@ -152,6 +153,9 @@
         const url = new URLSearchParams(window.location.search);
         const annee = url.get("annee");
         document.getElementById("annee_input").value = annee;
+        document
+          .getElementById("btn_back")
+          .addEventListener("click", go_back(event));
         let step = 0;
         crea_template(step, annee);
         crea_slide(annee);

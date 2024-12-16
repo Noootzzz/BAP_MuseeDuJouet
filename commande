@@ -1,0 +1,2 @@
+npx tailwindcss -i ./src/input.css -o ./src/public/css/style.css --watch
+node server.js 

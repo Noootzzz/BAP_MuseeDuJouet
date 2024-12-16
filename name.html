@@ -125,6 +125,12 @@
     if (aileron) {
       document.getElementById("aileron_input").value = aileron;
     }
+    if (bg) {
+      document.getElementById("bg_input").value = bg;
+    }
+    if (bg_color) {
+      document.getElementById("couleurFond_input").value = bg_color;
+    }
 
     document.getElementById("img-container").innerHTML = `
     <img
@@ -167,6 +173,6 @@
       alt="Couleur fond"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     />
-    `
+    `;
   </script>
 </html>
