@@ -28,7 +28,7 @@
         ></i>
       </header>
       <main class="flex flex-col items-center h-5/6 pt-[3rem]">
-        <div class="w-[36rem] h-[24rem] bg-black"></div>
+        <div id="img-container" class="w-[36rem] h-[24rem]"></div>
         <p class="text-blue-500 font-bold text-xl">
           Ecrit ton prénom pour récupérer ta voiture
         </p>
@@ -125,5 +125,48 @@
     if (aileron) {
       document.getElementById("aileron_input").value = aileron;
     }
+
+    document.getElementById("img-container").innerHTML = `
+    <img
+      src="./src/img/${annee}/Base_Front/Low-50's-Base-${bg}.webp"
+      alt="Image Base Front"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/Low-50's-Base-${couleur_voiture}.webp"
+      alt="Couleur voiture"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/Low-50's-Base-${volant}.webp"
+      alt="Volant"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/Low-50's-Base-${motif}.webp"
+      alt="Motif"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/Low-50's-Base-${jante}.webp"
+      alt="Jante"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/Low-50's-Base-${couleurAileron}.webp"
+      alt="Couleur aileron"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/Low-50's-Base-${aileron}.webp"
+      alt="Aileron"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/Low-50's-Base-${bg_color}.webp"
+      alt="Couleur fond"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    `
   </script>
 </html>
