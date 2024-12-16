@@ -50,7 +50,8 @@ function inputUpdate(activeIndex, step, swiper = undefined) {
       change_aileron(swiper, "Bleue", 0);
     }
   } else if (step === 6) {
-    document.getElementById("bg_input").value = `0${activeIndex}`;
+    console.log(+activeIndex + 1);
+    document.getElementById("bg_input").value = `0${+activeIndex + 1}`;
   }
 }
 

@@ -22,18 +22,21 @@
     />
   </head>
   <body>
-    <canvas id="carCanvas"></canvas>
+    <canvas id="carCanvas" style="display: none"></canvas>
     <div class="h-screen w-screen bg-gradient-to-b from-blue-200 to-blue-50">
       <header></header>
       <main class="flex flex-col items-center pt-[3rem]">
         <canvas id="CanvasQr"></canvas>
 
         <button class="h-10 w-20 rounded-xl bg-blue-500 text-white mt-[3rem]">
-          Continuer
+          <a href="./galerie.html">Continuer</a>
         </button>
       </main>
       <footer class="mt-[3rem]">
-        <button class="h-7 w-16 rounded-xl bg-blue-500 text-white">
+        <button
+          class="h-7 w-16 rounded-xl bg-blue-500 text-white"
+          onclick="history.back(); return false;"
+        >
           Retour
         </button>
       </footer>

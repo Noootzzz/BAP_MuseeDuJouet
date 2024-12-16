@@ -1,58 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Votre image</title>
-        <script
-            src="https://kit.fontawesome.com/ec35368b02.js"
-            crossorigin="anonymous"
-        ></script>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com/" />
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            rel="stylesheet"
-            href="https://unpkg.com/swiper/swiper-bundle.min.css"
-        />
-    </head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Votre image</title>
+    <script
+      src="https://kit.fontawesome.com/ec35368b02.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
     <div class="h-screen w-screen bg-gradient-to-b from-blue-200 to-blue-50">
-        <canvas id="myCanvas"></canvas>
+      <canvas id="myCanvas"></canvas>
     </div>
     <script>
-        const url = new URLSearchParams(window.location.search);
-        const imageName = urlParams.get("image");
-        if (imageName) {
-            const canvas = document.getElementById("myCanvas");
-            const ctx = canvas.getContext("2d");
+      const url = new URLSearchParams(window.location.search);
+      const imageName = urlParams.get("image");
+      if (imageName) {
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
 
-            // Construire le chemin vers l'image (ajustez selon votre structure de fichiers)
-            const imagePath = `saved_images/${imageName}`; // Ex: si les images sont dans un dossier 'images'
+        // Construire le chemin vers l'image (ajustez selon votre structure de fichiers)
+        const imagePath = `saved_images/${imageName}`; // Ex: si les images sont dans un dossier 'images'
 
-            const img = new Image();
-            img.src = imagePath;
+        const img = new Image();
+        img.src = imagePath;
 
-            img.onload = () => {
-                // Redimensionner et centrer l'image dans le canvas
-                const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
-                const x = (canvas.width - img.width * scale) / 2;
-                const y = (canvas.height - img.height * scale) / 2;
+        img.onload = () => {
+          // Redimensionner et centrer l'image dans le canvas
+          const scale = Math.min(
+            canvas.width / img.width,
+            canvas.height / img.height
+          );
+          const x = (canvas.width - img.width * scale) / 2;
+          const y = (canvas.height - img.height * scale) / 2;
 
-                ctx.clearRect(0, 0, canvas.width, canvas.height); // Efface le canvas
-                ctx.drawImage(img, x, y, img.width * scale, img.height * scale); // Dessine l'image
-            };
+          ctx.clearRect(0, 0, canvas.width, canvas.height); // Efface le canvas
+          ctx.drawImage(img, x, y, img.width * scale, img.height * scale); // Dessine l'image
+        };
 
-            img.onerror = () => {
-                console.error("Erreur lors du chargement de l'image :", imagePath);
-            };
-        } else {
+        img.onerror = () => {
+          console.error("Erreur lors du chargement de l'image :", imagePath);
+        };
+      } else {
         console.error("Aucun paramètre 'image' trouvé dans l'URL");
-        }
+      }
     </script>
-</body>
+  </body>
 </html>
