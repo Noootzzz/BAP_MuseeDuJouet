@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Choix de la couleur de voiture</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
     <script
       src="https://kit.fontawesome.com/ec35368b02.js"
       crossorigin="anonymous"
@@ -21,11 +22,12 @@
     />
   </head>
   <body>
-    <canvas id="carCanvas" style="display: none"></canvas>
+    <canvas id="carCanvas"></canvas>
     <div class="h-screen w-screen bg-gradient-to-b from-blue-200 to-blue-50">
       <header></header>
       <main class="flex flex-col items-center pt-[3rem]">
-        <div class="h-[24rem] w-[36rem] bg-black"></div>
+        <canvas id="CanvasQr"></canvas>
+
         <button class="h-10 w-20 rounded-xl bg-blue-500 text-white mt-[3rem]">
           Continuer
         </button>
@@ -66,23 +68,23 @@
 
       const bgImageUrl =
         bg_color == "undefined"
-          ? `./src/img/${annee}/Fond/Low-50's-Fond-${bg}.webp`
-          : `./src/img/${annee}/Fond/Low-50's-Fond-${bg}-${couleur_tab[bg_color]}.webp`;
-      const PneuGaucheUrl = `./src/img/${annee}/Pneu/Low-50's-Pneus-Gauche.webp`;
-      const BaseBackUrl = `./src/img/${annee}/Base_Back/Low-50's-Base-Siège-${couleur_tab[couleur_voiture]}.webp`;
-      const VolantUrl = `./src/img/${annee}/Volant/Low-50's-Volant-${volant}.webp`;
+          ? `./src/img/Fond/Fond-${bg}.png`
+          : `./src/img/Fond/Fond-${bg}-${couleur_tab[bg_color]}.png`;
+      const PneuGaucheUrl = `./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png`;
+      const BaseBackUrl = `./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur_voiture]}.png`;
+      const VolantUrl = `./src/img/${annee}/Volant/${annee}-Volant-${volant}-Blanc.png`;
       const AileronBackUrl =
         couleurAileron == "undefined"
-          ? `./src/img/${annee}/Aileron_Back/Low-50's-Aileron-Back-03.webp`
-          : `./src/img/${annee}/Aileron_Back/Low-50's-Aileron-Back-${aileron}-${couleur_tab[couleurAileron]}.webp`;
+          ? `./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-03.png`
+          : `./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-${aileron}-${couleur_tab[couleurAileron]}.png`;
       const AileronFrontUrl =
         couleurAileron == "undefined"
-          ? `./src/img/${annee}/Aileron_Front/Low-50's-Aileron-Front-03.webp`
-          : `./src/img/${annee}/Aileron_Front/Low-50's-Aileron-Front-${aileron}-${couleur_tab[couleurAileron]}.webp`;
-      const BaseFrontUrl = `./src/img/${annee}/Base_Front/Low-50's-Base-${couleur_tab[couleur_voiture]}.webp`;
-      const MotifUrl = `./src/img/${annee}/Motif/Low-50's-Motif-${motif}.webp`;
-      const PneuDroitUrl = `./src/img/${annee}/Pneu/Low-50's-Pneus-Droit.webp`;
-      const JanteUrl = `./src/img/${annee}/Jantes/Low-50's-Jantes-${jante}.webp`;
+          ? `./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-03.png`
+          : `./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-${aileron}-${couleur_tab[couleurAileron]}.png`;
+      const BaseFrontUrl = `./src/img/${annee}/Base_Front/${annee}-Base-${couleur_tab[couleur_voiture]}.png`;
+      const MotifUrl = `./src/img/${annee}/Motif/${annee}-Motif-${motif}.png`;
+      const PneuDroitUrl = `./src/img/${annee}/Pneu/${annee}-Pneus-Droit.png`;
+      const JanteUrl = `./src/img/${annee}/Jantes/${annee}-Jantes-${jante}.png`;
 
       const bgImage = new Image();
       const PneuGaucheImage = new Image();
@@ -188,6 +190,7 @@
     function saveCanvasToServer() {
       const canvas = document.getElementById("carCanvas");
       const imageData = canvas.toDataURL("image/png"); // Ou "image/jpeg" si nécessaire
+
       if (!imageData) {
         console.error("Erreur : imageData est vide.");
         return;
@@ -201,8 +204,22 @@
         body: JSON.stringify({ image: imageData, name: name }), // Image envoyée en Base64
       })
         .then((response) => response.json())
-        .then((data) => {
-          console.log("Image sauvegardée avec succès:", data);
+        .then((response) => {
+          console.log("Image sauvegardée avec succès:", response);
+
+          console.log(response.filename);
+          QRCode.toCanvas(
+            document.getElementById("CanvasQr"),
+            `http://localhost:3000/image?${response.filename}`,
+            {
+              width: 256, // Taille du QR Code
+              margin: 2, // Marge autour du QR Code
+            },
+            function (error) {
+              if (error) console.error(error);
+              console.log("QR Code généré avec succès!");
+            }
+          );
         })
         .catch((error) => {
           console.error("Erreur lors de la sauvegarde de l'image:", error);
