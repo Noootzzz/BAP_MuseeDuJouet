@@ -126,6 +126,9 @@
         crea.querySelector("#img").src = `./src/saved_images/${img}`;
         console.log(img, img[img.length -5]);
         crea.querySelector("#like").textContent = img[img.length-5];
+        crea.querySelector("#renameDiv").addEventListener("click", () => {
+          renameFile(img);
+        });
         i++;
         container.appendChild(crea);
       });
