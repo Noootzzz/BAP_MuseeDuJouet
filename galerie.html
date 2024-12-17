@@ -42,6 +42,9 @@
           <p id="name" class="text-center text-3xl text-blue-500 font-bold">
             Prénom
           </p>
+          <p id="like">
+            0
+          </p>
         </div>
       </div>
 
@@ -124,10 +127,18 @@
         name = name.charAt(0).toUpperCase() + name.slice(1);
         crea.querySelector("#name").textContent = name;
         crea.querySelector("#img").src = `./src/saved_images/${img}`;
-        console.log(img, img[img.length -5]);
-        crea.querySelector("#like").textContent = img[img.length-5];
-        crea.querySelector("#renameDiv").addEventListener("click", () => {
-          renameFile(img);
+        if(img[img.length-6] != "e"){
+          crea.querySelector("#like").textContent = img[img.length-6] +img[img.length-5];
+        }else{
+          crea.querySelector("#like").textContent = img[img.length-5];
+        }
+        crea.querySelector("#like").addEventListener("click", () => {
+          img = renameFile(img);
+          if(img[img.length-6] != "e"){
+            crea.querySelector("#like").textContent = img[img.length-6] +img[img.length-5];
+          }else{
+            crea.querySelector("#like").textContent = img[img.length-5];
+          }
         });
         i++;
         container.appendChild(crea);
@@ -137,14 +148,23 @@
     function renameFile(name) {
       let targetIndex = name.length - 5;
       let like = parseInt(name[targetIndex]);
-      like += 1;
-      let newName = name.slice(0, targetIndex) + like.toString(); + name.slice(targetIndex +1);
+      let newName;
+      if (like == 9){
+        let targetIndex2 = name.length - 6;
+        like = parseInt(name[targetIndex2]+name[targetIndex]);
+        like += 1;
+        newName = name.slice(0, targetIndex2) + like.toString() + name.slice(targetIndex +1);
+      }else{
+        like += 1;
+        newName = name.slice(0, targetIndex) + like.toString() + name.slice(targetIndex +1);
+      }
+      console.log(newName);
       fetch("/rename", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({newName}),
+        body: JSON.stringify({oldName: name,newName}),
       })
         .then((response) => {
           if (!response.ok) {
@@ -154,12 +174,12 @@
         })
         .then((data) => {
           console.log("Fichier renommé avec succès :", data.newName);
-          alert(`Fichier renommé en : ${data.newName}`);
         })
         .catch((error) => {
           console.error("Erreur :", error);
           alert("Impossible de renommer le fichier.");
         });
+      return newName;
     }
     fetchData();
   </script>

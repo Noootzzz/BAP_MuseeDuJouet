@@ -147,7 +147,6 @@ app.post("/rename", express.json(), (req, res) => {
         message: "Erreur lors du renommage du fichier.",
       });
     }
-
     res.json({ message: "Fichier renommé avec succès.", newName });
   });
 });
