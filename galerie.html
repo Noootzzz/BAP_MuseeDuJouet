@@ -42,6 +42,7 @@
           <p id="name" class="text-center text-3xl text-blue-500 font-bold">
             Prénom
           </p>
+          <p id="like">0</p>
         </div>
       </div>
 
@@ -56,9 +57,7 @@
           <p id="name" class="text-center text-xl text-blue-500 font-bold">
             Prénom
           </p>
-          <p id="like">
-            0
-          </p>
+          <p id="like">0</p>
         </div>
       </div>
     </main>
@@ -84,14 +83,11 @@
 
   <script>
     async function fetchData() {
-      console.log("charger");
-
       try {
         const response = await fetch("/gallery", {
           method: "GET",
         });
         const data = await response.json();
-        console.log("Données récupérées :", data);
         display(data);
       } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
@@ -107,16 +103,12 @@
 
       let i = 0;
       images.forEach((img) => {
-        console.log(i);
         if (i != images.length - 1) {
-          console.log(images.length - 1);
           container = document.getElementById("container");
           template = document.getElementById("template");
         } else {
           container = document.getElementById("nouv_img");
           template = document.getElementById("template_nouv");
-          // container.classList.add("scale-150");
-          // template.classList.add("scale-150");
         }
         const crea = template.cloneNode(true);
         crea.style.display = "block";
@@ -124,9 +116,8 @@
         name = name.charAt(0).toUpperCase() + name.slice(1);
         crea.querySelector("#name").textContent = name;
         crea.querySelector("#img").src = `./src/saved_images/${img}`;
-        console.log(img, img[img.length -5]);
-        crea.querySelector("#like").textContent = img[img.length-5];
-        crea.querySelector("#renameDiv").addEventListener("click", () => {
+        crea.querySelector("#like").textContent = img[img.length - 5];
+        crea.querySelector("#like").addEventListener("click", () => {
           renameFile(img);
         });
         i++;
@@ -138,13 +129,14 @@
       let targetIndex = name.length - 5;
       let like = parseInt(name[targetIndex]);
       like += 1;
-      let newName = name.slice(0, targetIndex) + like.toString(); + name.slice(targetIndex +1);
+      let newName = name.slice(0, targetIndex) + like.toString();
+      +name.slice(targetIndex + 1);
       fetch("/rename", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({newName}),
+        body: JSON.stringify({ newName }),
       })
         .then((response) => {
           if (!response.ok) {
