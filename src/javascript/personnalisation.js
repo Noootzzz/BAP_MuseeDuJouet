@@ -25,6 +25,9 @@ function crea_perso(step, annee, couleur = 0) {
   if (step == 5) {
     limit = 5;
     step_limit = 1;
+  } else if (step == 4) {
+    limit = 4;
+    step_limit = 1;
   }
   container.innerHTML = "";
   for (let j = 0; j < step_limit; j++) {
@@ -34,30 +37,37 @@ function crea_perso(step, annee, couleur = 0) {
       if (step == 1 && i <= volant.length - 1) {
         VoitureCard.querySelector(
           "#volant"
-        ).src = `./src/img/${annee}/Volant/50's-Volant-${volant[i]}-Blanc.png`;
+        ).src = `./src/img/${annee}/Volant/${annee}-Volant-${volant[i]}-Blanc.png`;
       } else if (step == 2 && i <= motif.length - 1) {
         VoitureCard.querySelector(
           "#motif"
-        ).src = `./src/img/${annee}/Motif/50's-Motif-${motif[i]}.png`;
+        ).src = `./src/img/${annee}/Motif/${annee}-Motif-${motif[i]}.png`;
       } else if (step == 3 && i <= jante.length - 1) {
         VoitureCard.querySelector(
           "#jante"
-        ).src = `./src/img/${annee}/Jantes/50's-Jantes-${jante[i]}.png`;
-      } else if (step == 4 && i <= aileron.length - 1) {
-        if (i != 2) {
+        ).src = `./src/img/${annee}/Jantes/${annee}-Jantes-${jante[i]}.png`;
+      } else if (step == 4 && i <= aileron.length) {
+        if (i == aileron.length) {
           VoitureCard.querySelector(
             "#aileron_back"
-          ).src = `./src/img/${annee}/Aileron_Back/50's-Aileron-Back-${aileron[i]}-${couleur_tab_aileron[couleur]}.png`;
+          ).src = `./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-04.png`;
           VoitureCard.querySelector(
             "#aileron_front"
-          ).src = `./src/img/${annee}/Aileron_Front/50's-Aileron-Front-${aileron[i]}-${couleur_tab_aileron[couleur]}.png`;
+          ).src = `./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-04.png`;
+        } else if (i != 2) {
+          VoitureCard.querySelector(
+            "#aileron_back"
+          ).src = `./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-${aileron[i]}-${couleur_tab_aileron[couleur]}.png`;
+          VoitureCard.querySelector(
+            "#aileron_front"
+          ).src = `./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-${aileron[i]}-${couleur_tab_aileron[couleur]}.png`;
         } else {
           VoitureCard.querySelector(
             "#aileron_back"
-          ).src = `./src/img/${annee}/Aileron_Back/50's-Aileron-Back-03.png`;
+          ).src = `./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-03.png`;
           VoitureCard.querySelector(
             "#aileron_front"
-          ).src = `./src/img/${annee}/Aileron_Front/50's-Aileron-Front-03.png`;
+          ).src = `./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-03.png`;
         }
       }
       if (step == 5 && i <= fond.length - 1) {

@@ -38,7 +38,7 @@ function inputUpdate(activeIndex, step, swiper = undefined) {
     document.getElementById("jante_input").value = `0${cycleValue}`;
   } else if (step === 5) {
     // Aileron
-    document.getElementById("aileron_input").value = `0${cycleValue}`;
+    document.getElementById("aileron_input").value = `0${+activeIndex + 1}`;
 
     if (cycleValue === 3 && lastCycleValue != 3) {
       // Si l'aileron est 3, on met "undefined" pour la couleur de l'aileron
