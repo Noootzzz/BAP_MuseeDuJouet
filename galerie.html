@@ -56,6 +56,9 @@
           <p id="name" class="text-center text-xl text-blue-500 font-bold">
             Prénom
           </p>
+          <p id="like">
+            0
+          </p>
         </div>
       </div>
     </main>
@@ -121,6 +124,8 @@
         name = name.charAt(0).toUpperCase() + name.slice(1);
         crea.querySelector("#name").textContent = name;
         crea.querySelector("#img").src = `./src/saved_images/${img}`;
+        console.log(img, img[img.length -5]);
+        crea.querySelector("#like").textContent = img[img.length-5];
         i++;
         container.appendChild(crea);
       });
