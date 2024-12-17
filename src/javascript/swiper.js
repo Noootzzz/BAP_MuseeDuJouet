@@ -95,6 +95,15 @@ function updateHighlightedSlide(swiperInstance, step) {
   }
   const bgColor = getComputedStyle(centerSlide).backgroundColor;
   highlightedSlide.style.backgroundColor = bgColor;
+
+  const bgColorClass = centerSlide.classList.toString().match(/bg-(\w+)-500/);
+  if (bgColorClass) {
+    const color = bgColorClass[1];
+    highlightedSlide.className = highlightedSlide.className
+      .replace(/shadow-\w+-200/, "")
+      .trim();
+    highlightedSlide.classList.add(`shadow-${color}-200`);
+  }
 }
 
 let couleur_tab_E = ["blue", "yellow", "pink", "red", "green"];
@@ -172,6 +181,8 @@ const crea_slide = (
     }
 
     VoitureCard.classList.add(`bg-${couleur_tab_E[i]}-500`);
+    VoitureCard.classList.add(`shadow-lg`);
+    VoitureCard.classList.add(`shadow-${couleur_tab_E[i]}-200`);
     VoitureCard.classList.add("swiper-slide");
     i++;
     container.appendChild(VoitureCard);
