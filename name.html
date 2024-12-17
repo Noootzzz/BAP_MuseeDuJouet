@@ -21,73 +21,61 @@
     />
   </head>
   <body class="relative bg-gradient-to-b from-blue-200 to-blue-50 h-screen">
-    <a href="index.html">
+    
+      <a href="index.html">
       <i
-        class="fa-solid fa-house text-5xl m-5 mb-0 text-blue-800 absolute top-5 left-5"
-      ></i>
+          class="fa-solid fa-house text-5xl m-5 mb-0 text-blue-800 absolute top-5 left-5"
+        ></i
     </a>
-      <main class="flex flex-col items-center h-5/6 pt-[3rem]">
-        <div
-          id="img-container"
-          class="w-[36rem] h-[24rem] relative mt-10 mb-20"
-        ></div>
-        <p class="bg-gradient-to-b from-blue-400 to-blue-800 text-transparent bg-clip-text font-bold text-xl">
-          Ecrit ton prénom pour récupérer ta voiture
-        </p>
-        <form action="./qr.html" method="get">
-          <input
-            id="couleurVoiture_input"
-            name="couleurVoiture"
-            type="hidden"
-            value="0"
-          />
-          <input id="annee_input" name="annee" type="hidden" value="0" />
-          <input id="volant_input" name="volant" type="hidden" value="01" />
-          <input
-            id="motif_input"
-            name="motif"
-            type="hidden"
-            value="undefined"
-          />
-          <input id="jante_input" name="jante" type="hidden" value="01" />
-          <input
-            id="couleurAileron_input"
-            name="couleurAileron"
-            type="hidden"
-            value="0"
-          />
-          <input
-            id="aileron_input"
-            name="aileron"
-            type="hidden"
-            value="undefined"
-          />
-
-          <input id="bg_input" name="bg" type="hidden" value="01" />
-          <input
-            id="couleurFond_input"
-            name="couleurFond"
-            type="hidden"
-            value="undefined"
-          />
-          <input id="step" name="step" type="hidden" value="0" />
-          <input type="text" id="name_input" name="name" />
-          <input
-            type="submit"
-            class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-xl w-20 h-10"
-            value="Continuer"
-          />
-        </form>
-      </main>
-      <footer class="h-1/6">
-        <button
-          onclick="history.back(); return false;"
-          class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-xl w-16 h-7"
-        >
-          Retour
-        </a>
-      </footer>
-    </div>
+    <main class="flex flex-col items-center h-5/6 pt-[3rem]">
+      <div
+        id="img-container"
+        class="w-[36rem] h-[24rem] relative mt-10 mb-20"
+      ></div>
+      <p class="bg-gradient-to-b from-blue-400 to-blue-800 text-transparent bg-clip-text font-bold text-xl">
+        Ecrit ton prénom pour récupérer ta voiture
+      </p>
+      <form action="./qr.html" method="get">
+        <input
+          id="couleurVoiture_input"
+          name="couleurVoiture"
+          type="hidden"
+          value="0"
+        />
+        <input id="annee_input" name="annee" type="hidden" value="0" />
+        <input id="volant_input" name="volant" type="hidden" value="01" />
+        <input id="motif_input" name="motif" type="hidden" value="undefined" />
+        <input id="jante_input" name="jante" type="hidden" value="01" />
+        <input
+          id="couleurAileron_input"
+          name="couleurAileron"
+          type="hidden"
+          value="0"
+        />
+        <input
+          id="aileron_input"
+          name="aileron"
+          type="hidden"
+          value="undefined"
+        />
+        <input id="bg_input" name="bg" type="hidden" value="01" />
+        <input id="step" name="step" type="hidden" value="0" />
+        <input type="text" id="name_input" name="name" />
+        <input
+          type="submit"
+          class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-xl w-20 h-10"
+          value="Continuer"
+        />
+      </form>
+    </main>
+    <footer class="h-1/6">
+      <button
+        onclick="history.back(); return false;"
+        class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-xl w-16 h-7"
+      >
+        Retour
+      </button>
+    </footer>
   </body>
 
   <script>
@@ -137,45 +125,54 @@
 
     document.getElementById("img-container").innerHTML = `
     <img
-      src="./src/img/${annee}/Base_Front/50's-Base-${bg}.webp"
-      alt="Image Base Front"
+      src="./src/img/Fond/Fond-${bg}.png"
+      alt="Image de fond"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     />
     <img
-      src="./src/img/${annee}/Base_Front/50's-Base-${couleur_voiture}.webp"
-      alt="Couleur voiture"
+      src="./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png"
+      alt="Pneu Gauche"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     />
     <img
-      src="./src/img/${annee}/Base_Front/50's-Base-${volant}.webp"
+      src="./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur_voiture]}.png"
+      alt="Base back"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Volant/${annee}-Volant-${volant}-Blanc.png"
       alt="Volant"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     />
     <img
-      src="./src/img/${annee}/Base_Front/50's-Base-${motif}.webp"
+      src="./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-${aileron}-${couleur_tab[couleurAileron]}.png"
+      alt="Aileron_Back"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-${aileron}-${couleur_tab[couleurAileron]}.png"
+      alt="Aileron_Front"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Base_Front/${annee}-Base-${couleur_tab[couleur_voiture]}.png"
+      alt="Base Front"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Motif/${annee}-Motif-${motif}.png"
       alt="Motif"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     />
     <img
-      src="./src/img/${annee}/Base_Front/50's-Base-${jante}.webp"
+      src="./src/img/${annee}/Pneu/${annee}-Pneus-Droit.png"
+      alt="Pneu droit"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    />
+    <img
+      src="./src/img/${annee}/Jantes/${annee}-Jantes-${jante}.png"
       alt="Jante"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-    />
-    <img
-      src="./src/img/${annee}/Base_Front/50's-Base-${couleurAileron}.webp"
-      alt="Couleur aileron"
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-    />
-    <img
-      src="./src/img/${annee}/Base_Front/50's-Base-${aileron}.webp"
-      alt="Aileron"
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-    />
-    <img
-      src="./src/img/${annee}/Base_Front/50's-Base-${bg_color}.webp"
-      alt="Couleur fond"
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-    />
-    `;
+    />`;
   </script>
 </html>

@@ -20,53 +20,65 @@
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
   </head>
-  <body>
-    <div class=" w-screen bg-gradient-to-b from-blue-200 to-blue-50">
-      <header></header>
-      <main class="flex flex-col items-center">
-        <h1 class="bg-gradient-to-b from-blue-400 to-blue-800 text-transparent bg-clip-text font-bold text-2xl">Galerie</h1>
-        <div
-          class="h-1/3 w-full flex justify-center"
-          id="nouv_img"
-        >
-          <div class="flex flex-col" id="template_nouv" style="display: none">
-            <div>
-              <img
-                id="img"
-                class="h-[12rem] w-[17rem] rounded-lg"
-                src=""
-                alt=""
-              />
-            </div>
-            <p id="name" class="text-center text-blue-500 font-bold" >Prénom</p>
-            <p id="like">0</p>
+  <body
+    class="relative bg-gradient-to-b from-blue-200 to-blue-50 w-screen overflow-x-hidden"
+  >
+    <a href="./index.html">
+      <i
+        class="fa-solid fa-house text-5xl m-5 mb-0 text-blue-800 absolute top-5 left-5"
+      ></i
+    ></a>
+    <main class="flex flex-col items-center p-10">
+      <h1
+        class="bg-gradient-to-b from-blue-400 to-blue-800 text-transparent bg-clip-text font-bold text-2xl"
+      >
+        Galerie
+      </h1>
+      <div class="w-screen flex justify-center" id="nouv_img">
+        <div class="flex flex-col" id="template_nouv" style="display: none">
+          <div>
+            <img id="img" class="h-72 w-96 rounded-lg" src="" alt="" />
           </div>
+          <p id="name" class="text-center text-3xl text-blue-500 font-bold">
+            Prénom
+          </p>
         </div>
+      </div>
 
-        <div
-          class="flex flex-wrap items-start justify-around w-full"
-          id="container"
-        >
-          <div class="flex flex-col" id="template" style="display: none">
-            <div>
-              <img
-                id="img"
-                src=""
-                class="h-[12rem] w-[17rem] rounded-lg"
-                alt=""
-              />
-            </div>
-            <p id="name" class="text-center text-blue-500 font-bold">Prénom</p>
+      <div
+        class="flex flex-wrap items-start justify-around w-full h-1/3"
+        id="container"
+      >
+        <div class="flex flex-col m-5" id="template" style="display: none">
+          <div>
+            <img id="img" src="" class="h-72 rounded-lg" alt="" />
           </div>
+          <p id="name" class="text-center text-xl text-blue-500 font-bold">
+            Prénom
+          </p>
         </div>
-      </main>
-      <footer>
-        <button class="h-7 w-16 rounded-xl bg-gradient-to-b from-blue-500 to-blue-800 text-white">
+      </div>
+    </main>
+    <footer>
+      <div
+        class="bootom-bar flex flex-wrap items-end justify-between content-between h-1/3 p-12 w-screen"
+      >
+        <a
+          href="#"
+          onclick="history.back(); return false;"
+          class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-full text-lg h-12 w-32 flex items-center justify-center"
+        >
           Retour
-        </button>
-      </footer>
-    </div>
+        </a>
+        <a
+          href="./index.html"
+          class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-full text-lg h-12 w-32 flex items-center justify-center"
+          >Terminer
+        </a>
+      </div>
+    </footer>
   </body>
+
   <script>
     async function fetchData() {
       console.log("charger");
@@ -92,15 +104,22 @@
 
       let i = 0;
       images.forEach((img) => {
-        if (i != 0) {
+        console.log(i);
+        if (i != images.length - 1) {
+          console.log(images.length - 1);
           container = document.getElementById("container");
           template = document.getElementById("template");
+        } else {
+          container = document.getElementById("nouv_img");
+          template = document.getElementById("template_nouv");
+          // container.classList.add("scale-150");
+          // template.classList.add("scale-150");
         }
         const crea = template.cloneNode(true);
         crea.style.display = "block";
-        crea.querySelector("#name").textContent = img
-          .split("_")[1]
-          .split("-")[0];
+        let name = img.split("_")[1].split("-")[0];
+        name = name.charAt(0).toUpperCase() + name.slice(1);
+        crea.querySelector("#name").textContent = name;
         crea.querySelector("#img").src = `./src/saved_images/${img}`;
         i++;
         container.appendChild(crea);

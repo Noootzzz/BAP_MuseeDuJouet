@@ -29,7 +29,11 @@
     </a>
     <canvas id="carCanvas" style="display: none"></canvas>
     <div class="h-screen w-screen bg-gradient-to-b from-blue-200 to-blue-50">
-      <header></header>
+      <a href="./index.html">
+        <i
+          class="fa-solid fa-house text-5xl m-5 mb-0 text-blue-800 absolute top-5 left-5"
+        ></i
+      ></a>
       <main class="flex flex-col items-center pt-[3rem]">
         <canvas id="CanvasQr"></canvas>
         <div
@@ -61,7 +65,6 @@
     const couleurAileron = url.get("couleurAileron");
     const aileron = url.get("aileron");
     const bg = url.get("bg");
-    const bg_color = url.get("couleurFond");
     const name = url.get("name");
 
     function drawCombinedImage() {
@@ -77,10 +80,7 @@
       const dx = (canvas.width - 500) / 2;
       const dy = (canvas.height - 500) / 2;
 
-      const bgImageUrl =
-        bg_color == "undefined"
-          ? `./src/img/Fond/Fond-${bg}.png`
-          : `./src/img/Fond/Fond-${bg}-${couleur_tab[bg_color]}.png`;
+      const bgImageUrl = `./src/img/Fond/Fond-${bg}.png`;
       const PneuGaucheUrl = `./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png`;
       const BaseBackUrl = `./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur_voiture]}.png`;
       const VolantUrl = `./src/img/${annee}/Volant/${annee}-Volant-${volant}-Blanc.png`;
