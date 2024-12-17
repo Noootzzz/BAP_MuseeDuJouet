@@ -61,7 +61,7 @@ app.post("/upload", express.json({ limit: "100mb" }), (req, res) => {
   }
 
   const base64Data = image.replace(/^data:image\/png;base64,/, "");
-  const filename = Date.now() + "_" + name + "-carImage.png";
+  const filename = Date.now() + "_" + name + "-carImage0.png";
 
   fs.writeFile(
     path.join(__dirname, "saved_images", filename),
@@ -128,6 +128,28 @@ app.get("/api/images", (req, res) => {
   console.log(`Images trouvées : ${JSON.stringify(images)}`);
 
   res.json(images); // Retourne la liste des chemins relatifs
+});
+
+app.post("/rename", express.json(), (req, res) => {
+  const { oldName, newName } = req.body;
+
+  if (!oldName || !newName) {
+    return res.status(400).json({ message: "Les noms de fichiers sont requis." });
+  }
+
+  const oldPath = path.join(__dirname, "saved_images", oldName);
+  const newPath = path.join(__dirname, "saved_images", newName);
+
+  fs.rename(oldPath, newPath, (err) => {
+    if (err) {
+      console.error("Erreur lors du renommage du fichier :", err);
+      return res.status(500).json({
+        message: "Erreur lors du renommage du fichier.",
+      });
+    }
+
+    res.json({ message: "Fichier renommé avec succès.", newName });
+  });
 });
 
 // Serv Start

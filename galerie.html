@@ -39,6 +39,7 @@
               />
             </div>
             <p id="name" class="text-center text-blue-500 font-bold" >Prénom</p>
+            <p id="like">0</p>
           </div>
         </div>
 
@@ -106,6 +107,33 @@
       });
     }
 
+    function renameFile(name) {
+      let targetIndex = name.length - 5;
+      let like = parseInt(name[targetIndex]);
+      like += 1;
+      let newName = name.slice(0, targetIndex) + like.toString(); + name.slice(targetIndex +1);
+      fetch("/rename", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({newName}),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Erreur lors du renommage du fichier.");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Fichier renommé avec succès :", data.newName);
+          alert(`Fichier renommé en : ${data.newName}`);
+        })
+        .catch((error) => {
+          console.error("Erreur :", error);
+          alert("Impossible de renommer le fichier.");
+        });
+    }
     fetchData();
   </script>
 </html>
