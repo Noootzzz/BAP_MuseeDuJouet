@@ -22,16 +22,24 @@
     />
   </head>
   <body>
-    <canvas id="carCanvas"></canvas>
+    <canvas id="carCanvas" style="display: none"></canvas>
     <div class="h-screen w-screen bg-gradient-to-b from-blue-200 to-blue-50">
       <header></header>
       <main class="flex flex-col items-center pt-[3rem]">
         <canvas id="CanvasQr"></canvas>
-        <div id="btn" class="h-10 w-20 rounded-xl bg-gradient-to-b from-blue-500 to-blue-800 text-white mt-[3rem]">
+        <div
+          id="btn"
+          class="h-10 w-20 rounded-xl bg-gradient-to-b from-blue-500 to-blue-800 text-white mt-[3rem]"
+        >
+          <a href="./galerie.html">Continuer</a>
         </div>
       </main>
       <footer class="mt-[3rem]">
-        <a href="#" class="h-7 w-16 rounded-xl bg-gradient-to-b from-blue-500 to-blue-800 text-white">
+        <a
+          href="#"
+          onclick="history.back(); return false;"
+          class="h-7 w-16 rounded-xl bg-gradient-to-b from-blue-500 to-blue-800 text-white"
+        >
           Retour
         </a>
       </footer>
@@ -225,9 +233,9 @@
     }
 
     drawCombinedImage();
-    document.getElementById("btn").innerHTML= `
+    document.getElementById("btn").innerHTML = `
         <a href="galerie.html?${url}">
           Continuer
-        </a>`
+        </a>`;
   </script>
 </html>
