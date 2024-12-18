@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./index.html",
+    "./epoque.html",
     "./voiture.html",
     "./personnalisation.html",
     "./perso_aileron.html",
@@ -12,7 +13,12 @@ module.exports = {
     "./src/**/*.{html,js}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      scale: {
+        200: "2",
+        300: "3",
+      },
+    },
   },
   plugins: [],
 };

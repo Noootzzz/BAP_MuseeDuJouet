@@ -12,6 +12,7 @@ const traductions = {
     phrase4: "Customize your spoiler",
     phrase5: "Customize your background",
     choixLangue: "Change your language",
+    CommencerVoiture: "Start customizing your car.",
   },
   fr: {
     choixEpoque: "Choissisez votre époque!",
@@ -22,6 +23,7 @@ const traductions = {
     retour: "Retour",
     suivant: "Suivant",
     choixLangue: "Choisis ta langue",
+    CommencerVoiture: "Commence à créer ta voiture.",
   },
 };
 

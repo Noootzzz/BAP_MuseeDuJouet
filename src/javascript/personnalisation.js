@@ -2,7 +2,7 @@ const volant = ["01", "02", "03"];
 const motif = ["01", "02", "03"];
 const jante = ["01", "02", "03"];
 const aileron = ["01", "02", "03"];
-const fond = ["01", "02", "03", "04", "05"];
+const fond = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"];
 const phrases = [
   "Personnalise ton volant",
   "Personnalise ton motif",
@@ -15,7 +15,9 @@ couleur_tab_aileron = couleur_tab;
 
 function crea_perso(step, annee, couleur = 0) {
   document.getElementById("perso_phrase").innerHTML = phrases[step - 1];
-  document.getElementById("perso_phrase").setAttribute("data-translate",`phrase${step}`);
+  document
+    .getElementById("perso_phrase")
+    .setAttribute("data-translate", `phrase${step}`);
   const container = document.getElementById("swiper-wrapper");
   const template = document
     .getElementById("swiper-wrapper")
@@ -24,7 +26,7 @@ function crea_perso(step, annee, couleur = 0) {
   let limit = 3;
   let step_limit = 2;
   if (step == 5) {
-    limit = 5;
+    limit = 10;
     step_limit = 1;
   } else if (step == 4) {
     limit = 4;
@@ -72,7 +74,15 @@ function crea_perso(step, annee, couleur = 0) {
         }
       }
       if (step == 5 && i <= fond.length - 1) {
-        console.log(i);
+        VoitureCard.querySelector("#volant").style.display = "none";
+        VoitureCard.querySelector("#motif").style.display = "none";
+        VoitureCard.querySelector("#jante").style.display = "none";
+        VoitureCard.querySelector("#aileron_back").style.display = "none";
+        VoitureCard.querySelector("#aileron_front").style.display = "none";
+        VoitureCard.querySelector("#pneus_gauche").style.display = "none";
+        VoitureCard.querySelector("#Base_Back").style.display = "none";
+        VoitureCard.querySelector("#Base_Front").style.display = "none";
+        VoitureCard.querySelector("#pneus_droit").style.display = "none";
         VoitureCard.querySelector(
           "#bg"
         ).style.backgroundImage = `url("src/img/Fond/Fond-${fond[i]}.png")`;
