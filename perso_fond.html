@@ -51,6 +51,24 @@
     }
   </style>
   <body class="relative bg-gradient-to-b from-blue-200 to-blue-50 h-screen">
+    <div class="absolute flex top-0 right-0">
+      <button id="changeLanguage">
+        <img
+          data-lang="fr"
+          src="./src//img/logo/logo_france_flag.svg"
+          class="w-20 m-5 border-4 object-cover border-blue-500 rounded-xl p-0"
+          alt=""
+        />
+      </button>
+      <button id="changeLanguage">
+        <img
+          data-lang="en"
+          src="./src//img/logo/logo_england_flag.svg"
+          class="w-20 m-5 object-cover rounded-xl p-0"
+          alt=""
+        />
+      </button>
+    </div>
     <a href="./index.html">
       <i
         class="fa-solid fa-house text-5xl m-5 mb-0 text-blue-800 absolute top-5 left-5"
@@ -139,6 +157,7 @@
           class="bootom-bar flex flex-wrap items-end justify-between content-between mt-3"
         >
           <a
+            data-translate="retour"
             href="#"
             onclick="history.back(); return false;"
             class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-full text-lg h-12 w-32 flex items-center justify-center"
@@ -187,6 +206,7 @@
 
             <input id="step" name="step" type="hidden" value="0" />
             <input
+              data-translate="suivant"
               type="submit"
               class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-full text-lg h-12 w-32 flex items-center justify-center"
               value="Suivant"
@@ -278,5 +298,6 @@
     <script src="./src/javascript/swiper.js"></script>
     <script src="./src/javascript/personnalisation.js"></script>
     <script src="./src/javascript/aileron.js"></script>
+    <script src="src/javascript/traduction.js"></script>
   </body>
 </html>
