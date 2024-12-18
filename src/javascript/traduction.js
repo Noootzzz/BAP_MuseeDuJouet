@@ -2,11 +2,15 @@ const traductions = {
   en: {
     choixEpoque: "Choose a period",
     choixVoiture: "Choose the color of your car",
-    choixVolant: "Personalize your wheel",
     nom: "Write your name to get your car",
     galerie: "galery",
     retour:"back",
     suivant:"next",
+    phrase1: "Customize your steering wheel",
+    phrase2: "Customize your pattern",
+    phrase3: "Customize your rims",
+    phrase4: "Customize your spoiler",
+    phrase5: "Customize your background",
   },
   fr: {
     choixEpoque: "Choissisez votre époque!",
@@ -16,6 +20,11 @@ const traductions = {
     galerie: "galerie",
     retour:"retour",
     suivant:"suivant",
+    phrase1: "Personnalise ton volant",
+    phrase2: "Personnalise ton motif",
+    phrase3: "Personnalise tes jantes",
+    phrase4: "Personnalise ton aileron",
+    phrase5: "Personnalise ton fond",
   },
 };
 
