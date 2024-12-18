@@ -43,6 +43,10 @@ document.querySelectorAll("#changeLanguage").forEach((button) => {
   button.addEventListener("click", (event) => {
     console.log("Langue changée");
     const selectedLanguage = event.target.getAttribute("data-lang");
+    document.querySelectorAll("#flags").forEach((img) => {
+      img.classList.remove("border-4", "border-blue-500");
+    });
+    event.target.classList.add("border-4", "border-blue-500");
     changeLanguage(selectedLanguage);
   });
 });
