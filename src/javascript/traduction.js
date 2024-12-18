@@ -11,8 +11,9 @@ const traductions = {
     phrase3: "Customize your rims",
     phrase4: "Customize your spoiler",
     phrase5: "Customize your background",
-  },
-  fr: {
+    terminer: "Finish",
+},
+fr: {
     choixEpoque: "Choissisez votre époque!",
     choixVoiture: "Choisis la couleur de ta voiture",
     choixVolant: "Personnalise ton volant",
@@ -25,10 +26,11 @@ const traductions = {
     phrase3: "Personnalise tes jantes",
     phrase4: "Personnalise ton aileron",
     phrase5: "Personnalise ton fond",
+    terminer: "Terminer",
   },
 };
 
-function changeLanguage(language) {
+function changeLanguage(language,) {
   const elements = document.querySelectorAll("[data-translate]");
   elements.forEach((element) => {
     const key = element.getAttribute("data-translate");
