@@ -2,12 +2,16 @@ const traductions = {
   en: {
     choixEpoque: "Choose a period",
     choixVoiture: "Choose the color of your car",
-    choixVolant: "Personalize your wheel",
     nom: "Write your name to get your car",
     galerie: "galery",
     retour: "Back",
     suivant: "Next",
-    choixLangue: "Change language",
+    phrase1: "Customize your steering wheel",
+    phrase2: "Customize your pattern",
+    phrase3: "Customize your rims",
+    phrase4: "Customize your spoiler",
+    phrase5: "Customize your background",
+    choixLangue: "Change your language",
   },
   fr: {
     choixEpoque: "Choissisez votre époque!",

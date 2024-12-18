@@ -15,6 +15,7 @@ couleur_tab_aileron = couleur_tab;
 
 function crea_perso(step, annee, couleur = 0) {
   document.getElementById("perso_phrase").innerHTML = phrases[step - 1];
+  document.getElementById("perso_phrase").setAttribute("data-translate",`phrase${step}`);
   const container = document.getElementById("swiper-wrapper");
   const template = document
     .getElementById("swiper-wrapper")
