@@ -98,6 +98,7 @@
         class="bootom-bar fixed bottom-0 left-0 flex flex-wrap justify-between content-between w-full py-2 px-10"
       >
         <a
+          data-translate="retour"
           href="#"
           onclick="history.back(); return false;"
           class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-full text-lg h-12 w-32 flex items-center justify-center"
@@ -105,6 +106,7 @@
           Retour
         </a>
         <a
+          data-translate="terminer"
           href="./index.html"
           class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-full text-lg h-12 w-32 flex items-center justify-center"
           >Terminer
@@ -157,9 +159,15 @@
         let name = img.split("_")[1].split("-")[0];
         name = name.charAt(0).toUpperCase() + name.slice(1);
         if (i == 0) {
-          crea.querySelector(
-            "#name"
-          ).textContent = `Bravo a ${name} qui a la voiture la plus liké`;
+          if (localStorage.getItem("language") == "en") {
+            crea.querySelector(
+              "#name"
+            ).textContent = `Congrats to ${name} with the most likes`;
+          } else if (localStorage.getItem("language") == "fr") {
+            crea.querySelector(
+              "#name"
+            ).textContent = `Bravo a ${name} qui a la voiture la plus liké`;
+          }
         } else {
           crea.querySelector("#name").textContent = `${name}`;
         }

@@ -11,7 +11,7 @@ const traductions = {
     phrase3: "Customize your rims",
     phrase4: "Customize your spoiler",
     phrase5: "Customize your background",
-    choixLangue: "Change your language",
+    terminer: "Finish",
     CommencerVoiture: "Start customizing your car.",
   },
   fr: {
@@ -22,7 +22,12 @@ const traductions = {
     galerie: "galerie",
     retour: "Retour",
     suivant: "Suivant",
-    choixLangue: "Choisis ta langue",
+    phrase1: "Personnalise ton volant",
+    phrase2: "Personnalise ton motif",
+    phrase3: "Personnalise tes jantes",
+    phrase4: "Personnalise ton aileron",
+    phrase5: "Personnalise ton fond",
+    terminer: "Terminer",
     CommencerVoiture: "Commence à créer ta voiture.",
   },
 };
