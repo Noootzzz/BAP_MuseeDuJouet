@@ -5,8 +5,9 @@ const traductions = {
     choixVolant: "Personalize your wheel",
     nom: "Write your name to get your car",
     galerie: "galery",
-    retour:"back",
-    suivant:"next",
+    retour: "Back",
+    suivant: "Next",
+    choixLangue: "Change language",
   },
   fr: {
     choixEpoque: "Choissisez votre époque!",
@@ -14,8 +15,9 @@ const traductions = {
     choixVolant: "Personnalise ton volant",
     nom: "Ecris ton prénom pour récupérer ta voiture",
     galerie: "galerie",
-    retour:"retour",
-    suivant:"suivant",
+    retour: "Retour",
+    suivant: "Suivant",
+    choixLangue: "Choisis ta langue",
   },
 };
 
