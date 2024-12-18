@@ -21,7 +21,9 @@
     />
   </head>
   <body>
-    <div class="h-screen w-screen bg-gradient-to-b from-blue-200 to-blue-50">
+    <div
+      class="h-screen w-screen bg-gradient-to-b relative from-blue-200 to-blue-50"
+    >
       <header class="flex items-end justify-center h-1/3">
         <img
           src="./src/img/logo/FabriqueAVoitures 3.png"
@@ -31,6 +33,18 @@
         <button id="changeLanguage" data-lang="en">english</button>
         <button id="changeLanguage" data-lang="fr">français</button>
       </header>
+      <div class="absolute flex top-0 right-0">
+        <img
+          src="./src//img/logo/logo_france_flag.svg"
+          class="w-20 m-5 border-4 object-cover border-blue-500 rounded-xl p-0"
+          alt=""
+        />
+        <img
+          src="./src//img/logo/logo_england_flag.svg"
+          class="w-20 m-5 object-cover rounded-xl p-0"
+          alt=""
+        />
+      </div>
       <main class="h-1/3 pt-[2rem]">
         <div class="flex flex-col items-center">
           <p class="bg-gradient-to-b from-blue-400 to-blue-800 text-transparent bg-clip-text font-bold text-2xl" data-translate="choixEpoque">choisis ton époque</p>
