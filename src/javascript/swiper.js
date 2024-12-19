@@ -503,7 +503,7 @@ const crea_template = (
             id="ombre"
             src="./src/img/Fond/Ombre.png"
             alt="Image Ombre"
-            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[52%] transform scale-150 blur"
+            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[52%] transform scale-150 blur "
           />
           <img
             id="pneus_gauche"
