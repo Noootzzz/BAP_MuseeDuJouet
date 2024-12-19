@@ -88,13 +88,12 @@
       const canvas = document.getElementById("carCanvas");
       const ctx = canvas.getContext("2d");
 
-      canvas.width = 300;
+      canvas.width = 540;
       canvas.height = 300;
-
       ctx.fillStyle = "#FFFFFF";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      const dx = (canvas.width - 300) / 2;
+      const dx = (canvas.width - 540) / 2;
       const dy = (canvas.height - 300) / 2;
 
       const bgImageUrl = `./src/img/Fond/Fond-${bg}.png`;
@@ -232,9 +231,6 @@
       })
         .then((response) => response.json())
         .then((response) => {
-          console.log("Image sauvegardée avec succès:", response);
-
-          console.log(response.filename);
           QRCode.toCanvas(
             document.getElementById("CanvasQr"),
             `http://localhost:3000/image?${response.filename}`,
@@ -244,7 +240,6 @@
             },
             function (error) {
               if (error) console.error(error);
-              console.log("QR Code généré avec succès!");
             }
           );
           document.getElementById("carCanvas").removeAttribute("style");

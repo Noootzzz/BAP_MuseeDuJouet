@@ -1,5 +1,6 @@
 const traductions = {
   en: {
+    choixLangue: "Choose your language:",
     choixEpoque: "Choose a period",
     choixVoiture: "Choose the color of your car",
     nom: "Write your name to get your car",
@@ -13,8 +14,9 @@ const traductions = {
     phrase5: "Customize your background",
     terminer: "Finish",
     CommencerVoiture: "Start customizing your car.",
-  },
-  fr: {
+},
+fr: {
+    choixLangue: "Choisis ta langue:",
     choixEpoque: "Choissisez votre époque!",
     choixVoiture: "Choisis la couleur de ta voiture",
     choixVolant: "Personnalise ton volant",
@@ -53,12 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.querySelectorAll("#changeLanguage").forEach((button) => {
-  console.log(button);
   button.addEventListener("click", (event) => {
-    console.log("Langue changée");
     const selectedLanguage = event.target.getAttribute("data-lang");
     document.querySelectorAll("#flags").forEach((img) => {
-      console.log(img);
       img.classList.remove("border-4", "border-blue-500");
     });
     event.target.classList.add("border-4", "border-blue-500");
