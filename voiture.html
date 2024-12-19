@@ -131,16 +131,6 @@
           >
             Retour
           </a>
-          <div
-            class="swiper-button-prev text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-full flex items-center justify-center h-12 w-12 text-lg"
-          >
-            <i class="fa-solid fa-arrow-left"></i>
-          </div>
-          <div
-            class="swiper-button-next text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-full flex items-center justify-center h-12 w-12 text-lg"
-          >
-            <i class="fa-solid fa-arrow-right"></i>
-          </div>
           <form action="./personnalisation.html" method="get">
             <input
               id="couleurVoiture_input"
@@ -182,10 +172,6 @@
           preloadImages: true,
           lazy: false,
           speed: 300,
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
         });
 
         swiper.on("slideChange", () => {

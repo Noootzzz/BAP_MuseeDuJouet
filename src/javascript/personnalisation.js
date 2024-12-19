@@ -47,6 +47,9 @@ function crea_perso(step, annee, couleur = 0) {
         ).src = `./src/img/${annee}/Motif/${annee}-Motif-${motif[i]}.png`;
       } else if (step == 3 && i <= jante.length - 1) {
         VoitureCard.querySelector(
+          "#single_jante"
+        ).src = `./src/img/${annee}/Jantes/${annee}-Jantes-${jante[i]}.png`;
+        VoitureCard.querySelector(
           "#jante"
         ).src = `./src/img/${annee}/Jantes/${annee}-Jantes-${jante[i]}.png`;
       } else if (step == 4 && i <= aileron.length) {
@@ -89,7 +92,9 @@ function crea_perso(step, annee, couleur = 0) {
 
         VoitureCard.classList.remove(`bg-${couleur_tab_E[i]}-500`);
       } else {
-        VoitureCard.classList.add(`bg-${couleur_tab_E[i]}-500`);
+        if (step > 3) {
+          VoitureCard.classList.add(`bg-${couleur_tab_E[i]}-500`);
+        }
       }
       VoitureCard.classList.add("swiper-slide");
       container.appendChild(VoitureCard);
