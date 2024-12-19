@@ -2,7 +2,7 @@ const volant = ["01", "02", "03"];
 const motif = ["01", "02", "03"];
 const jante = ["01", "02", "03"];
 const aileron = ["01", "02", "03"];
-const fond = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"];
+const fond = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "010"];
 const phrases = [
   "Personnalise ton volant",
   "Personnalise ton motif",

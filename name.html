@@ -170,11 +170,13 @@
     <img
       src="./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-${aileron}-${couleur_tab[couleurAileron]}.png"
       alt="Aileron_Back"
+      id = "Aileron_Back"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-75"
     />
     <img
       src="./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-${aileron}-${couleur_tab[couleurAileron]}.png"
       alt="Aileron_Front"
+      id = "Aileron_Front"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-75"
     />
     <img
@@ -197,6 +199,15 @@
       alt="Jante"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-75"
     />`;
+    if (couleurAileron == "undefined" || couleurAileron == undefined) {
+      console.log("hi");
+      document.getElementById(
+        "Aileron_Back"
+      ).src = `./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-03.png`;
+      document.getElementById(
+        "Aileron_Front"
+      ).src = `./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-03.png`;
+    }
   </script>
   <script src="src/javascript/traduction.js"></script>
 </html>

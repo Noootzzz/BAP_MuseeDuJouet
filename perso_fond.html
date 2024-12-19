@@ -215,6 +215,7 @@
           document.getElementById("aileron_input").value = aileron;
         }
 
+        console.log(couleurAileron);
         crea_template(
           step_prev,
           annee,
@@ -258,6 +259,15 @@
           );
           inputUpdate(index_active, step_prev, swiper);
         });
+        if (couleurAileron == "undefined" || couleurAileron == undefined) {
+          console.log("hi");
+          document.getElementById(
+            "Aileron_Back"
+          ).src = `./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-03.png`;
+          document.getElementById(
+            "Aileron_Front"
+          ).src = `./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-03.png`;
+        }
       });
     </script>
     <script src="./src/javascript/swiper.js"></script>

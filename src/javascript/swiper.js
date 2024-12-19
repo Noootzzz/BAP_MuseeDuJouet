@@ -503,7 +503,7 @@ const crea_template = (
             id="ombre"
             src="./src/img/Fond/Ombre.png"
             alt="Image Ombre"
-            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[52%] transform scale-150 blur "
+            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[54%] transform scale-150 blur opacity-75 "
           />
           <img
             id="pneus_gauche"
@@ -560,5 +560,17 @@ const crea_template = (
           />
          
           <div id="bg"></div> `;
+    if (couleur_aileron == "undefined" || couleur_aileron == undefined) {
+      document
+        .getElementById("swiper-slide-template")
+        .querySelector(
+          "#aileron_back"
+        ).src = `./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-03.png`;
+      document
+        .getElementById("swiper-slide-template")
+        .querySelector(
+          "#aileron_front"
+        ).src = `./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-03.png`;
+    }
   }
 };
