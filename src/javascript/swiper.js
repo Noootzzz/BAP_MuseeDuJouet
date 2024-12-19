@@ -94,8 +94,19 @@ function updateHighlightedSlide(swiperInstance, step) {
     highlightedSlide.querySelector("#aileron_back").src = aileron_back.src;
     highlightedSlide.querySelector("#aileron_back").classList.add("scale-150");
   }
-  const bgColor = getComputedStyle(centerSlide).backgroundColor;
-  highlightedSlide.style.backgroundColor = bgColor;
+  let bgColor;
+  couleur_tab_E.forEach((couleur) => {
+    highlightedSlide.classList.remove(`bg-${couleur}-500`);
+  });
+  if (centerSlide.querySelector("#peinture")) {
+    bgColor = centerSlide
+      .querySelector("#peinture")
+      .src.match(/\/([^\/]*)\./)[1];
+    highlightedSlide.classList.add(`bg-${bgColor}-500`);
+  } else {
+    bgColor = getComputedStyle(centerSlide).backgroundColor;
+    highlightedSlide.style.backgroundColor = bgColor;
+  }
 
   const bgColorClass = centerSlide.classList.toString().match(/bg-(\w+)-500/);
   if (bgColorClass) {
@@ -164,7 +175,7 @@ const crea_slide = (
       if (VoitureCard.querySelector("#peinture")) {
         VoitureCard.querySelector(
           "#peinture"
-        ).src = `./src/img/Peinture/${couleur}.png`;
+        ).src = `./src/img/Peinture/${couleur_tab_E[i]}.png`;
       }
       if (motif != undefined && motif != null) {
         VoitureCard.querySelector(
@@ -179,8 +190,6 @@ const crea_slide = (
         aileron !== null &&
         couleur_aileron !== null
       ) {
-        console.log(aileron);
-        console.log(couleur_aileron);
         VoitureCard.querySelector(
           "#aileron_front"
         ).src = `./src/img/${annee}/Aileron_Front/50's-Aileron-Front-${aileron}-${couleur_aileron_tab[couleur_aileron]}.png`;
@@ -189,10 +198,14 @@ const crea_slide = (
         ).src = `./src/img/${annee}/Aileron_Back/50's-Aileron-Back-${aileron}-${couleur_aileron_tab[couleur_aileron]}.png`;
       }
     }
-
-    VoitureCard.classList.add(`bg-${couleur_tab_E[i]}-500`);
-    VoitureCard.classList.add(`shadow-lg`);
-    VoitureCard.classList.add(`shadow-${couleur_tab_E[i]}-200`);
+    if (VoitureCard.querySelector("#ombre")) {
+      VoitureCard.querySelector("#ombre").style.display = "none";
+    }
+    if (step.value > 4) {
+      VoitureCard.classList.add(`bg-${couleur_tab_E[i]}-500`);
+      VoitureCard.classList.add(`shadow-lg`);
+      VoitureCard.classList.add(`shadow-${couleur_tab_E[i]}-200`);
+    }
     VoitureCard.classList.add("swiper-slide");
     i++;
     container.appendChild(VoitureCard);
@@ -203,7 +216,7 @@ const crea_template = (
   step,
   annee = "50's",
   volant = "01",
-  motif = undefined,
+  motif = "01",
   jante = "01",
   couleur = 0,
   aileron = undefined,
@@ -214,19 +227,19 @@ const crea_template = (
     <div id="bg">
           <img
             id="peinture"
-            src="./src/img/Peinture/${couleur_tab[couleur]}.png"
+            src="./src/img/Peinture/${couleur_tab_E[couleur]}.png"
             alt="Image peinture"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-75"
           />    
           <img
-          style="display: none"
+            style="display: none"
             id="pneus_gauche"
             src="./src/img/${annee}/Pneu/50's-Pneus-Gauche.png"
             alt="Image pneus gauche"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
-          style="display: none"
+            style="display: none"
             id="Base_Back"
             src="./src/img/${annee}/Base_Back/50's-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
@@ -264,6 +277,13 @@ const crea_template = (
     document.getElementById("swiper-slide-template").innerHTML = `
     <div id="bg">
           <img
+            style="display: none"
+            id="peinture"
+            src="./src/img/Peinture/${couleur_tab_E[couleur]}.png"
+            alt="Image peinture"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-75"
+          />    
+          <img
             id="pneus_gauche"
             style="display: none"
             src="./src/img/${annee}/Pneu/50's-Pneus-Gauche.png"
@@ -282,7 +302,7 @@ const crea_template = (
             src="./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png"
             alt="Image Volant"
             class="absolute top-[20%] left-[35%]"
-            style="transform: scale(4)"
+            style="transform: scale(5)"
           />
           <img
             id="Base_Front"
@@ -307,43 +327,65 @@ const crea_template = (
           /></div> `;
   } else if (step <= 3) {
     document.getElementById("swiper-slide-template").innerHTML = `
-  <div id="bg">     <img
+  <div id="bg" style="overflow: hidden;"> 
+          <img
+            style="display: none"
+            id="peinture"
+            src="./src/img/Peinture/${couleur_tab_E[couleur]}.png"
+            alt="Image peinture"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-75"
+          />       
+          <img
+            style="display: none"
             id="pneus_gauche"
             src="./src/img/${annee}/Pneu/50's-Pneus-Gauche.png"
             alt="Image pneus gauche"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
+            style="display: none"
             id="Base_Back"
             src="./src/img/${annee}/Base_Back/50's-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
+            style="display: none"
             id="volant"
             src="./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png"
             alt="Image Volant"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
+            style="display: none"
             id="Base_Front"
             src="./src/img/${annee}/Base_Front/50's-Base-${couleur_tab[couleur]}.png"
             alt="Image Base Front"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
+            style="display: none"
             id="motif"
             src=""
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
+            style="display: none"
             id="pneus_droit"
             src="./src/img/${annee}/Pneu/50's-Pneus-Droit.png"
             alt="Image Pneus Droit"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+          />
+          <img
+            id="single_jante"
+            src="./src/img/${annee}/Jantes/50's-Jantes-${jante}.png"
+            alt="Image Single Jante"
+            class="absolute"
+            style="transform: scale(2)"
           />
           <img
             id="jante"
+            style="display: none"
             src="./src/img/${annee}/Jantes/50's-Jantes-${jante}.png"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -407,6 +449,12 @@ const crea_template = (
       .classList.add("w-full", "h-full");
     document.getElementById("swiper-slide-template").innerHTML = `
           <img
+            id="ombre"
+            src="./src/img/Fond/Ombre.png"
+            alt="Image Ombre"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform scale-150"
+          />
+          <img
             id="pneus_gauche"
             src="./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png"
             alt="Image pneus gauche"
@@ -459,6 +507,7 @@ const crea_template = (
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
+         
           <div id="bg"></div> `;
   }
 };
