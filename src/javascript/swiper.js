@@ -12,7 +12,7 @@ function updateSlideSize(swiperInstance) {
     if (swiperInstance.activeIndex === index) {
       slide.style.transform = "scale(1.1)";
       slide.style.borderRadius = "calc(0.5rem / 1.1)";
-      slide.classList.remove("blur-sm");
+      // slide.classList.remove("blur-sm");
     }
   });
 }
@@ -189,6 +189,7 @@ const crea_slide = (
         ).src = `./src/img/${annee}/Aileron_Back/50's-Aileron-Back-${aileron}-${couleur_aileron_tab[couleur_aileron]}.png`;
       }
     }
+
     VoitureCard.classList.add(`bg-${couleur_tab_E[i]}-500`);
     VoitureCard.classList.add(`shadow-lg`);
     VoitureCard.classList.add(`shadow-${couleur_tab_E[i]}-200`);
@@ -367,13 +368,13 @@ const crea_template = (
             alt="Image Volant"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
-            <img
-            id="aileron_front"
+          <img
+            id="aileron_back"
             src=""
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
-          <img
-            id="aileron_back"
+            <img
+            id="aileron_front"
             src=""
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
@@ -425,15 +426,16 @@ const crea_template = (
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
-            id="aileron_front"
-            src="./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-${aileron}-${couleur_tab[couleur_aileron]}.png"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          />
-          <img
             id="aileron_back"
             src="./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-${aileron}-${couleur_tab[couleur_aileron]}.png"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
+          <img
+            id="aileron_front"
+            src="./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-${aileron}-${couleur_tab[couleur_aileron]}.png"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+
           <img
             id="Base_Front"
             src="./src/img/${annee}/Base_Front/${annee}-Base-${couleur_tab[couleur]}.png"

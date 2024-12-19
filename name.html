@@ -20,7 +20,16 @@
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
   </head>
-  <body class="relative bg-gradient-to-b from-blue-200 to-blue-50 h-screen">
+  <style>
+    body {
+      background-image: url("./src/img/Fond/fond_accueil.png");
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      width: 100vw;
+    }
+  </style>
+  <body class="relative h-screen">
     <a href="index.html">
       <i
         class="fa-solid fa-house text-5xl m-5 mb-0 text-blue-800 absolute top-5 left-5"
@@ -32,7 +41,8 @@
         class="w-[36rem] h-[24rem] relative mt-10 overflow-hidden"
       ></div>
       <p
-        class="bg-gradient-to-b from-blue-400 to-blue-800 text-transparent bg-clip-text font-bold text-xl" data-translate="nom"
+        class="bg-gradient-to-b from-blue-400 to-blue-800 text-transparent bg-clip-text font-bold text-2xl"
+        data-translate="nom"
       >
         Ecris ton prénom pour récupérer ta voiture
       </p>
@@ -61,7 +71,13 @@
         />
         <input id="bg_input" name="bg" type="hidden" value="01" />
         <input id="step" name="step" type="hidden" value="0" />
-        <input type="text" id="name_input" name="name" class="mt-5" required />
+        <input
+          type="text"
+          id="name_input"
+          name="name"
+          class="mt-5 w-60 rounded-xl px-3 py-2 border-2 border-indigo-500/100"
+          required
+        />
         <input
           type="submit"
           class="text-white bg-gradient-to-b from-blue-500 to-blue-800 rounded-xl p-2 mt-5"

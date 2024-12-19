@@ -20,18 +20,25 @@
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
   </head>
+  <style>
+    body {
+      background-image: url("./src/img/Fond/fond_accueil.png");
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      width: 100vw;
+    }
+  </style>
   <body>
     <div class="h-screen w-screen bg-gradient-to-b from-blue-200 to-blue-50">
-      <div id="img">
-        
-      </div>
+      <div id="img"></div>
     </div>
     <script>
       const url = new URLSearchParams(window.location.search);
       const imageName = urlParams.get("image");
       const imagePath = `saved_images/${imageName}`; // Ex: si les images sont dans un dossier 'images'
       document.getElementById("img").innerHTML = `
-      <img src="${imagePath}" alt="Voiture">`
+      <img src="${imagePath}" alt="Voiture">`;
     </script>
   </body>
 </html>
