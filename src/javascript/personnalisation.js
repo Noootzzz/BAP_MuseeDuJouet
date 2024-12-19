@@ -48,7 +48,7 @@ function crea_perso(step, annee, couleur = 0) {
       } else if (step == 3 && i <= jante.length - 1) {
         VoitureCard.querySelector(
           "#single_jante"
-        ).src = `./src/img/${annee}/Jantes/${annee}-Jantes-${jante[i]}.png`;
+        ).src = `./src/img/${annee}/jante_single/single-${jante[i]}.png`;
         VoitureCard.querySelector(
           "#jante"
         ).src = `./src/img/${annee}/Jantes/${annee}-Jantes-${jante[i]}.png`;

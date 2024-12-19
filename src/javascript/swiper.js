@@ -325,7 +325,58 @@ const crea_template = (
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           /></div> `;
-  } else if (step <= 3) {
+  } else if (step <= 2) {
+    document.getElementById("swiper-slide-template").innerHTML = `
+  <div id="bg" style="overflow: hidden;"> 
+          <img
+            style="display: none"
+            id="peinture"
+            src="./src/img/Peinture/${couleur_tab_E[couleur]}.png"
+            alt="Image peinture"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-75"
+          />       
+          <img
+            id="pneus_gauche"
+            src="./src/img/${annee}/Pneu/50's-Pneus-Gauche.png"
+            alt="Image pneus gauche"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+          />
+          <img
+            id="Base_Back"
+            src="./src/img/${annee}/Base_Back/50's-Base-Siège-${couleur_tab[couleur]}.png"
+            alt="Image Base Back"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+          />
+          <img
+            id="volant"
+            src="./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png"
+            alt="Image Volant"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+          />
+          <img
+            id="Base_Front"
+            src="./src/img/${annee}/Base_Front/50's-Base-${couleur_tab[couleur]}.png"
+            alt="Image Base Front"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+          />
+          <img
+            id="motif"
+            src=""
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+          />
+          <img
+            id="pneus_droit"
+            src="./src/img/${annee}/Pneu/50's-Pneus-Droit.png"
+            alt="Image Pneus Droit"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+          />
+          <img
+            id="jante"
+            src="./src/img/${annee}/Jantes/50's-Jantes-${jante}.png"
+            alt="Image Jante"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  scale-150"
+          /></div> `;
+  } else if (step <= 4) {
     document.getElementById("swiper-slide-template").innerHTML = `
   <div id="bg" style="overflow: hidden;"> 
           <img
@@ -378,10 +429,10 @@ const crea_template = (
           />
           <img
             id="single_jante"
-            src="./src/img/${annee}/Jantes/50's-Jantes-${jante}.png"
+            src="./src/img/${annee}/jantes_single/50's-Jantes-${jante}.png"
             alt="Image Single Jante"
-            class="absolute"
-            style="transform: scale(2)"
+            class="absolute left-[30%] "
+            style="transform: scale(0.7)"
           />
           <img
             id="jante"
@@ -452,60 +503,60 @@ const crea_template = (
             id="ombre"
             src="./src/img/Fond/Ombre.png"
             alt="Image Ombre"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform scale-150"
+            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[52%] transform scale-150 blur"
           />
           <img
             id="pneus_gauche"
             src="./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png"
             alt="Image pneus gauche"
-            class=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class=" absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[47%]"
           />
           
           <img
             id="Base_Back"
             src="./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[47%]"
           />
           <img
             id="volant"
             src="./src/img/${annee}/Volant/${annee}-Volant-${volant}-Blanc.png"
             alt="Image Volant"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[47%]"
           />
           <img
             id="aileron_back"
             src="./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-${aileron}-${couleur_tab[couleur_aileron]}.png"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[47%]"
           />
           <img
             id="aileron_front"
             src="./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-${aileron}-${couleur_tab[couleur_aileron]}.png"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[47%]"
           />
 
           <img
             id="Base_Front"
             src="./src/img/${annee}/Base_Front/${annee}-Base-${couleur_tab[couleur]}.png"
             alt="Image Base Front"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[47%]"
           />
           <img
             id="motif"
             src="./src/img/${annee}/Motif/${annee}-Motif-${motif}.png"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[47%]"
           />
           <img
             id="pneus_droit"
             src="./src/img/${annee}/Pneu/${annee}-Pneus-Droit.png"
             alt="Image Pneus Droit"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[47%]"
           />
           <img
             id="jante"
             src="./src/img/${annee}/Jantes/${annee}-Jantes-${jante}.png"
             alt="Image Jante"
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[47%]"
           />
          
           <div id="bg"></div> `;
