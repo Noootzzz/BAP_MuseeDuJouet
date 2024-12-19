@@ -73,11 +73,15 @@ function updateHighlightedSlide(swiperInstance, step) {
   const jante = centerSlide.querySelector("#jante");
   const aileron_front = centerSlide.querySelector("#aileron_front");
   const aileron_back = centerSlide.querySelector("#aileron_back");
+  const pneus_droit = centerSlide.querySelector("#pneus_droit");
+  const pneus_gauche = centerSlide.querySelector("#pneus_gauche");
 
   highlightedSlide.querySelector("#Base_Back").src = baseBackImage.src;
   highlightedSlide.querySelector("#Base_Front").src = baseFrontImage.src;
   highlightedSlide.querySelector("#volant").src = volant.src;
   highlightedSlide.querySelector("#jante").src = jante.src;
+  highlightedSlide.querySelector("#pneus_gauche").src = pneus_gauche.src;
+  highlightedSlide.querySelector("#pneus_droit").src = pneus_droit.src;
 
   if (bg.style.backgroundImage != "") {
     highlightedSlide.querySelector("#bg").style.backgroundImage =
@@ -158,19 +162,19 @@ const crea_slide = (
     if (step.value != 7) {
       VoitureCard.querySelector(
         "#Base_Back"
-      ).src = `./src/img/${annee}/Base_Back/50\'s-Base-Si\ège-${couleur}.png`;
+      ).src = `./src/img/${annee}/Base_Back/${annee}-Base-Si\ège-${couleur}.png`;
 
       VoitureCard.querySelector(
         "#volant"
-      ).src = `./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png`;
+      ).src = `./src/img/${annee}/Volant/${annee}-Volant-${volant}-Blanc.png`;
 
       VoitureCard.querySelector(
         "#Base_Front"
-      ).src = `./src/img/${annee}/Base_Front/50\'s-Base-${couleur}.png`;
+      ).src = `./src/img/${annee}/Base_Front/${annee}-Base-${couleur}.png`;
 
       VoitureCard.querySelector(
         "#jante"
-      ).src = `./src/img/${annee}/Jantes/50's-Jantes-${jante}.png`;
+      ).src = `./src/img/${annee}/Jantes/${annee}-Jantes-${jante}.png`;
 
       if (VoitureCard.querySelector("#peinture")) {
         VoitureCard.querySelector(
@@ -180,7 +184,7 @@ const crea_slide = (
       if (motif != undefined && motif != null) {
         VoitureCard.querySelector(
           "#motif"
-        ).src = `./src/img/${annee}/Motif/50's-Motif-${motif}.png`;
+        ).src = `./src/img/${annee}/Motif/${annee}-Motif-${motif}.png`;
       }
       if (
         aileron != "undefined" &&
@@ -192,10 +196,10 @@ const crea_slide = (
       ) {
         VoitureCard.querySelector(
           "#aileron_front"
-        ).src = `./src/img/${annee}/Aileron_Front/50's-Aileron-Front-${aileron}-${couleur_aileron_tab[couleur_aileron]}.png`;
+        ).src = `./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-${aileron}-${couleur_aileron_tab[couleur_aileron]}.png`;
         VoitureCard.querySelector(
           "#aileron_back"
-        ).src = `./src/img/${annee}/Aileron_Back/50's-Aileron-Back-${aileron}-${couleur_aileron_tab[couleur_aileron]}.png`;
+        ).src = `./src/img/${annee}/Aileron_Back/${annee}-Aileron-Back-${aileron}-${couleur_aileron_tab[couleur_aileron]}.png`;
       }
     }
     if (VoitureCard.querySelector("#ombre")) {
@@ -234,42 +238,42 @@ const crea_template = (
           <img
             style="display: none"
             id="pneus_gauche"
-            src="./src/img/${annee}/Pneu/50's-Pneus-Gauche.png"
+            src="./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png"
             alt="Image pneus gauche"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             style="display: none"
             id="Base_Back"
-            src="./src/img/${annee}/Base_Back/50's-Base-Siège-${couleur_tab[couleur]}.png"
+            src="./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
           style="display: none"
             id="volant"
-            src="./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png"
+            src="./src/img/50's/Volant/50's-Volant-${volant}-Blanc.png"
             alt="Image Volant"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
           style="display: none"
             id="Base_Front"
-            src="./src/img/${annee}/Base_Front/50's-Base-${couleur_tab[couleur]}.png"
+            src="./src/img/${annee}/Base_Front/${annee}-Base-${couleur_tab[couleur]}.png"
             alt="Image Base Front"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
           style="display: none"
             id="pneus_droit"
-            src="./src/img/${annee}/Pneu/50's-Pneus-Droit.png"
+            src="./src/img/${annee}/Pneu/${annee}-Pneus-Droit.png"
             alt="Image Pneus Droit"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
           style="display: none"
             id="jante"
-            src="./src/img/${annee}/Jantes/50's-Jantes-${jante}.png"
+            src="./src/img/${annee}/Jantes/${annee}-Jantes-${jante}.png"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           /></div> `;
@@ -286,20 +290,20 @@ const crea_template = (
           <img
             id="pneus_gauche"
             style="display: none"
-            src="./src/img/${annee}/Pneu/50's-Pneus-Gauche.png"
+            src="./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png"
             alt="Image pneus gauche"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             style="display: none"
             id="Base_Back"
-            src="./src/img/${annee}/Base_Back/50's-Base-Siège-${couleur_tab[couleur]}.png"
+            src="./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="volant"
-            src="./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png"
+            src="./src/img/50's/Volant/50's-Volant-${volant}-Blanc.png"
             alt="Image Volant"
             class="absolute top-[20%] left-[35%]"
             style="transform: scale(5)"
@@ -307,21 +311,21 @@ const crea_template = (
           <img
             id="Base_Front"
             style="display: none"
-            src="./src/img/${annee}/Base_Front/50's-Base-${couleur_tab[couleur]}.png"
+            src="./src/img/${annee}/Base_Front/${annee}-Base-${couleur_tab[couleur]}.png"
             alt="Image Base Front"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="pneus_droit"
             style="display: none"
-            src="./src/img/${annee}/Pneu/50's-Pneus-Droit.png"
+            src="./src/img/${annee}/Pneu/${annee}-Pneus-Droit.png"
             alt="Image Pneus Droit"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="jante"
             style="display: none"
-            src="./src/img/${annee}/Jantes/50's-Jantes-${jante}.png"
+            src="./src/img/${annee}/Jantes/${annee}-Jantes-${jante}.png"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           /></div> `;
@@ -337,25 +341,25 @@ const crea_template = (
           />       
           <img
             id="pneus_gauche"
-            src="./src/img/${annee}/Pneu/50's-Pneus-Gauche.png"
+            src="./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png"
             alt="Image pneus gauche"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
             id="Base_Back"
-            src="./src/img/${annee}/Base_Back/50's-Base-Siège-${couleur_tab[couleur]}.png"
+            src="./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
             id="volant"
-            src="./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png"
+            src="./src/img/50's/Volant/50's-Volant-${volant}-Blanc.png"
             alt="Image Volant"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
             id="Base_Front"
-            src="./src/img/${annee}/Base_Front/50's-Base-${couleur_tab[couleur]}.png"
+            src="./src/img/${annee}/Base_Front/${annee}-Base-${couleur_tab[couleur]}.png"
             alt="Image Base Front"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
@@ -366,13 +370,13 @@ const crea_template = (
           />
           <img
             id="pneus_droit"
-            src="./src/img/${annee}/Pneu/50's-Pneus-Droit.png"
+            src="./src/img/${annee}/Pneu/${annee}-Pneus-Droit.png"
             alt="Image Pneus Droit"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
             id="jante"
-            src="./src/img/${annee}/Jantes/50's-Jantes-${jante}.png"
+            src="./src/img/${annee}/Jantes/${annee}-Jantes-${jante}.png"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  scale-150"
           /></div> `;
@@ -389,28 +393,28 @@ const crea_template = (
           <img
             style="display: none"
             id="pneus_gauche"
-            src="./src/img/${annee}/Pneu/50's-Pneus-Gauche.png"
+            src="./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png"
             alt="Image pneus gauche"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
             style="display: none"
             id="Base_Back"
-            src="./src/img/${annee}/Base_Back/50's-Base-Siège-${couleur_tab[couleur]}.png"
+            src="./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
             style="display: none"
             id="volant"
-            src="./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png"
+            src="./src/img/50's/Volant/50's-Volant-${volant}-Blanc.png"
             alt="Image Volant"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
             style="display: none"
             id="Base_Front"
-            src="./src/img/${annee}/Base_Front/50's-Base-${couleur_tab[couleur]}.png"
+            src="./src/img/${annee}/Base_Front/${annee}-Base-${couleur_tab[couleur]}.png"
             alt="Image Base Front"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
@@ -423,13 +427,13 @@ const crea_template = (
           <img
             style="display: none"
             id="pneus_droit"
-            src="./src/img/${annee}/Pneu/50's-Pneus-Droit.png"
+            src="./src/img/${annee}/Pneu/${annee}-Pneus-Droit.png"
             alt="Image Pneus Droit"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
             id="single_jante"
-            src="./src/img/${annee}/jantes_single/50's-Jantes-${jante}.png"
+            src="./src/img/${annee}/jantes_single/${annee}-Jantes-${jante}.png"
             alt="Image Single Jante"
             class="absolute left-[30%] "
             style="transform: scale(0.7)"
@@ -437,7 +441,7 @@ const crea_template = (
           <img
             id="jante"
             style="display: none"
-            src="./src/img/${annee}/Jantes/50's-Jantes-${jante}.png"
+            src="./src/img/${annee}/Jantes/${annee}-Jantes-${jante}.png"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           /></div> `;
@@ -445,19 +449,19 @@ const crea_template = (
     document.getElementById("swiper-slide-template").innerHTML = `
   <div id="bg">     <img
             id="pneus_gauche"
-            src="./src/img/${annee}/Pneu/50's-Pneus-Gauche.png"
+            src="./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png"
             alt="Image pneus gauche"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="Base_Back"
-            src="./src/img/${annee}/Base_Back/50's-Base-Siège-${couleur_tab[couleur]}.png"
+            src="./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="volant"
-            src="./src/img/${annee}/Volant/50's-Volant-${volant}-Blanc.png"
+            src="./src/img/50's/Volant/50's-Volant-${volant}-Blanc.png"
             alt="Image Volant"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
@@ -473,7 +477,7 @@ const crea_template = (
           />
           <img
             id="Base_Front"
-            src="./src/img/${annee}/Base_Front/50's-Base-${couleur_tab[couleur]}.png"
+            src="./src/img/${annee}/Base_Front/${annee}-Base-${couleur_tab[couleur]}.png"
             alt="Image Base Front"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
@@ -484,13 +488,13 @@ const crea_template = (
           />
           <img
             id="pneus_droit"
-            src="./src/img/${annee}/Pneu/50's-Pneus-Droit.png"
+            src="./src/img/${annee}/Pneu/${annee}-Pneus-Droit.png"
             alt="Image Pneus Droit"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             id="jante"
-            src="./src/img/${annee}/Jantes/50's-Jantes-${jante}.png"
+            src="./src/img/${annee}/Jantes/${annee}-Jantes-${jante}.png"
             alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           /></div> `;
@@ -520,7 +524,7 @@ const crea_template = (
           />
           <img
             id="volant"
-            src="./src/img/${annee}/Volant/${annee}-Volant-${volant}-Blanc.png"
+            src="./src/img/50's/Volant/50's-Volant-${volant}-Blanc.png"
             alt="Image Volant"
             class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[47%]"
           />
