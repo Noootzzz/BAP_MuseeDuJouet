@@ -267,7 +267,7 @@
         .then((response) => {
           QRCode.toCanvas(
             document.getElementById("CanvasQr"),
-            `http://localhost:3000/image?${response.filename}`,
+            `http://localhost:3000/image.html?image=${response.filename}`,
             {
               width: 300, // Taille du QR Code
               margin: 2, // Marge autour du QR Code
