@@ -71,6 +71,12 @@
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
         />
         <img
+          id="jante_back"
+          src="./src/img/1900's/Jantes-Back/1900's-Jantes-Back-01.png"
+          alt="Image Jante"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+        />
+        <img
           id="Base_Back"
           src="./src/img/50's/Base_Back/50's-Base-Siège-Bleue.png"
           alt="Image Base Back"
@@ -118,7 +124,7 @@
       </div>
       <h3
         id="perso_phrase"
-        class="text-2xl p-4 bg-gradient-to-b from-[#0064B3] via-[#004B87] to-[#057DDC] text-transparent bg-clip-text w-full text-center"
+        class="bg-gradient-to-b from-[#0064B3] via-[#004B87] to-[#057DDC] text-transparent bg-clip-text font-bold text-2xl"
         data-translate="choixVolant"
       >
         Personnalise ton volant
@@ -226,7 +232,6 @@
         if (aileron) {
           document.getElementById("aileron_input").value = aileron;
         }
-
         if (step_prev == 4) {
           window.location.href = `./perso_aileron.html?couleurVoiture=${couleur_voiture}&annee=${annee}&volant=${volant}&motif=${motif}&jante=${jante}&couleurAileron=undefined&aileron=undefined&step=5`;
         }

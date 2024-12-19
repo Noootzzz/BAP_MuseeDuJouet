@@ -83,6 +83,13 @@ function updateHighlightedSlide(swiperInstance, step) {
   highlightedSlide.querySelector("#pneus_gauche").src = pneus_gauche.src;
   highlightedSlide.querySelector("#pneus_droit").src = pneus_droit.src;
 
+  if (annee_input.value == "1900's" || annee_input.value == "30's") {
+    const jante_back = centerSlide.querySelector("#jante_back");
+    highlightedSlide.querySelector("#jante_back").src = jante_back.src;
+  } else {
+    highlightedSlide.querySelector("#jante_back").src = pneus_gauche.src;
+  }
+
   if (bg.style.backgroundImage != "") {
     highlightedSlide.querySelector("#bg").style.backgroundImage =
       bg.style.backgroundImage;
@@ -243,6 +250,13 @@ const crea_template = (
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
+          style="display: none"
+            id="jante_back"
+            src="./src/img/${annee}/Jantes-Back/${annee}-Jantes-Back-${jante}.png"
+            alt="Image Jante"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+          <img
             style="display: none"
             id="Base_Back"
             src="./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur]}.png"
@@ -292,6 +306,13 @@ const crea_template = (
             style="display: none"
             src="./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png"
             alt="Image pneus gauche"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+          <img
+            style="display: none"
+            id="jante_back"
+            src="./src/img/${annee}/Jantes-Back/${annee}-Jantes-Back-${jante}.png"
+            alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
@@ -346,6 +367,13 @@ const crea_template = (
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
+            style="display: none"
+            id="jante_back"
+            src="./src/img/${annee}/Jantes-Back/${annee}-Jantes-Back-${jante}.png"
+            alt="Image Jante"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+          />
+          <img
             id="Base_Back"
             src="./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
@@ -396,6 +424,13 @@ const crea_template = (
             src="./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png"
             alt="Image pneus gauche"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+          />
+          <img
+            style="display: none"
+            id="jante_back"
+            src="./src/img/${annee}/Jantes-Back/${annee}-Jantes-Back-${jante}.png"
+            alt="Image Jante"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
             style="display: none"
@@ -454,11 +489,19 @@ const crea_template = (
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
           <img
+            style="display: none"
+            id="jante_back"
+            src="./src/img/${annee}/Jantes-Back/${annee}-Jantes-Back-${jante}.png"
+            alt="Image Jante"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+          <img
             id="Base_Back"
             src="./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur]}.png"
             alt="Image Base Back"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
+          
           <img
             id="volant"
             src="./src/img/50's/Volant/50's-Volant-${volant}-Blanc.png"
@@ -515,7 +558,13 @@ const crea_template = (
             alt="Image pneus gauche"
             class=" absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[47%]"
           />
-          
+          <img
+            style="display: none"
+            id="jante_back"
+            src="./src/img/${annee}/Jantes-Back/${annee}-Jantes-Back-${jante}.png"
+            alt="Image Jante"
+            class="absolute top-1/2 left-1/2 -translate-x-[45%] -translate-y-[47%]"
+          />
           <img
             id="Base_Back"
             src="./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur]}.png"
@@ -576,5 +625,30 @@ const crea_template = (
           "#aileron_front"
         ).src = `./src/img/${annee}/Aileron_Front/${annee}-Aileron-Front-03.png`;
     }
+  }
+  if (annee_input.value == "1900's" && step == 1) {
+    const volantElement = document
+      .getElementById("swiper-slide-template")
+      .querySelector("#volant");
+
+    volantElement.classList.remove("top-[20%]");
+    volantElement.classList.remove("left-[35%]");
+
+    volantElement.classList.add("top-1/2");
+    volantElement.classList.add("left-[35%]");
+  } else if (step != 0 && step <= 6 && annee_input.value == "1900's") {
+    document
+      .getElementById("swiper-slide-template")
+      .querySelector("#jante_back").style.display = "block";
+  } else if (annee_input.value == "30's" && step == 1) {
+    const volantElement = document
+      .getElementById("swiper-slide-template")
+      .querySelector("#volant");
+
+    volantElement.classList.remove("top-[20%]");
+    volantElement.classList.remove("left-[35%]");
+
+    volantElement.classList.add("top-1/2");
+    volantElement.classList.add("left-[9%]");
   }
 };

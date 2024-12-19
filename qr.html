@@ -92,6 +92,7 @@
       const dy = (canvas.height - 300) / 2;
 
       const bgImageUrl = `./src/img/Fond/Fond-${bg}.png`;
+      const OmbreUrl = `./src/img/Fond/Ombre.png`;
       const PneuGaucheUrl = `./src/img/${annee}/Pneu/${annee}-Pneus-Gauche.png`;
       const BaseBackUrl = `./src/img/${annee}/Base_Back/${annee}-Base-Siège-${couleur_tab[couleur_voiture]}.png`;
       const VolantUrl = `./src/img/${annee}/Volant/${annee}-Volant-${volant}-Blanc.png`;
@@ -108,19 +109,9 @@
       const PneuDroitUrl = `./src/img/${annee}/Pneu/${annee}-Pneus-Droit.png`;
       const JanteUrl = `./src/img/${annee}/Jantes/${annee}-Jantes-${jante}.png`;
 
-      const bgImage = new Image();
-      const PneuGaucheImage = new Image();
-      const BaseBackImage = new Image();
-      const VolantImage = new Image();
-      const AileronBackImage = new Image();
-      const AileronFrontImage = new Image();
-      const BaseFrontImage = new Image();
-      const MotifImage = new Image();
-      const PneuDroitImage = new Image();
-      const JanteImage = new Image();
-
       const images = {
         bgImage: new Image(),
+        OmbreImage: new Image(),
         PneuGaucheImage: new Image(),
         BaseBackImage: new Image(),
         VolantImage: new Image(),
@@ -137,6 +128,7 @@
 
       // Charge chaque image
       images.bgImage.src = bgImageUrl;
+      images.OmbreImage.src = OmbreUrl;
       images.PneuGaucheImage.src = PneuGaucheUrl;
       images.BaseBackImage.src = BaseBackUrl;
       images.VolantImage.src = VolantUrl;
@@ -155,8 +147,29 @@
         const scaledHeight = canvas.height * scaleFactory;
         const offsetX = (canvas.width - scaledWidth) / 1.7; // Centrer horizontalement
         const offsetY = (canvas.height - scaledHeight) / 2; // Centrer verticalement
+        const scaleFactor = 1.5; // Échelle pour l'ombre
+        const translateX = -canvas.width * 0.45; // Décalage horizontal
+        const translateY = -canvas.height * 0.54;
 
         ctx.drawImage(images.bgImage, dx, dy, canvas.width, canvas.height);
+        // Effets de flou et opacité
+        ctx.filter = "blur(8px) opacity(75%)";
+
+        // Appliquer les transformations pour l'ombre
+        ctx.save();
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.scale(scaleFactor, scaleFactor);
+        ctx.drawImage(
+          images.OmbreImage,
+          translateX,
+          translateY,
+          canvas.width,
+          canvas.height
+        );
+        ctx.restore();
+
+        // Réinitialiser le filtre
+        ctx.filter = "none";
         ctx.drawImage(
           images.PneuGaucheImage,
           offsetX,

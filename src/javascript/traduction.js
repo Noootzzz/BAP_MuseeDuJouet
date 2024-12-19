@@ -14,8 +14,11 @@ const traductions = {
     phrase5: "Customize your background",
     terminer: "Finish",
     CommencerVoiture: "Start customizing your car.",
-},
-fr: {
+    1900: "1900's",
+    1930: "1930's",
+    1950: "1950's",
+  },
+  fr: {
     choixLangue: "Choisis ta langue:",
     choixEpoque: "Choissisez votre époque!",
     choixVoiture: "Choisis la couleur de ta voiture",
@@ -31,6 +34,9 @@ fr: {
     phrase5: "Personnalise ton fond",
     terminer: "Terminer",
     CommencerVoiture: "Commence à créer ta voiture.",
+    1900: "Années 1900",
+    1930: "Années 1930",
+    1950: "Années 1950",
   },
 };
 

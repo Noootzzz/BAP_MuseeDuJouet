@@ -54,7 +54,7 @@
   <body class="relative h-screen">
     <a href="./index.html">
       <i
-        class="fa-solid fa-house text-5xl bg-gradient-to-b from-[#0064B3] via-[#004B87] to-[#057DDC] text-transparent bg-clip-text m-5 mb-0  absolute top-5 left-5"
+        class="fa-solid fa-house text-5xl bg-gradient-to-b from-[#0064B3] via-[#004B87] to-[#057DDC] text-transparent bg-clip-text m-5 mb-0 absolute top-5 left-5"
       ></i>
     </a>
     <div class="h-full pt-24">
@@ -67,6 +67,12 @@
             id="pneus_gauche"
             src="./src/img/50's/Pneu/50's-Pneus-Gauche.png"
             alt="Image pneus gauche"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
+          />
+          <img
+            id="jante_back"
+            src="./src/img/1900's/Jantes-Back/1900's-Jantes-Back-01.png"
+            alt="Image Jante"
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150"
           />
           <img
@@ -260,6 +266,9 @@
           document.getElementById("aileron_input").value = aileron;
         }
 
+        if (annee == "30's") {
+          window.location.href = `./perso_fond.html?couleurVoiture=${couleur_voiture}&annee=${annee}&volant=${volant}&motif=${motif}&jante=${jante}&couleurAileron=undefined&aileron=3&step=${step}`;
+        }
         crea_template(step_prev, annee);
         crea_slide(
           annee,

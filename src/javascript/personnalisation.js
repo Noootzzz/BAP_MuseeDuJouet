@@ -52,6 +52,9 @@ function crea_perso(step, annee, couleur = 0) {
         VoitureCard.querySelector(
           "#jante"
         ).src = `./src/img/${annee}/Jantes/${annee}-Jantes-${jante[i]}.png`;
+        VoitureCard.querySelector(
+          "#jante_back"
+        ).src = `./src/img/${annee}/Jantes-Back/${annee}-Jantes-Back-${jante[i]}.png`;
       } else if (step == 4 && i <= aileron.length) {
         if (i == aileron.length) {
           VoitureCard.querySelector(
@@ -86,6 +89,7 @@ function crea_perso(step, annee, couleur = 0) {
         VoitureCard.querySelector("#Base_Back").style.display = "none";
         VoitureCard.querySelector("#Base_Front").style.display = "none";
         VoitureCard.querySelector("#pneus_droit").style.display = "none";
+        VoitureCard.querySelector("#jante_back").style.display = "none";
         VoitureCard.querySelector(
           "#bg"
         ).style.backgroundImage = `url("src/img/Fond/Fond-${fond[i]}.png")`;
