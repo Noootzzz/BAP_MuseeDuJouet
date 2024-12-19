@@ -33,15 +33,20 @@
   <body>
     <a href="index.html">
       <i
-        class="fa-solid fa-house bg-gradient-to-b from-[#0064B3] via-[#004B87] to-[#057DDC] text-transparent bg-clip-text absolute top-5 left-5"
+        class="fa-solid fa-house text-5xl m-5 mb-0 bg-gradient-to-b from-[#0064B3] via-[#004B87] to-[#057DDC] text-transparent bg-clip-text absolute top-5 left-5"
       ></i>
     </a>
 
     <div class="h-screen w-screen">
       <main class="flex flex-col items-center pt-3 h-4/5">
-        <div class="flex h-full w-full items-center justify-center">
+        <div class="flex flex-col h-full w-full items-center justify-center">
           <canvas id="carCanvas" style="display: none"></canvas>
-          <canvas id="CanvasQr" class="h-2/3 w-1/3 m-10"></canvas>
+          <canvas id="CanvasQr"></canvas>
+          <h3
+            class="bg-gradient-to-b from-[#0064B3] via-[#004B87] to-[#057DDC] text-transparent bg-clip-text font-bold text-3xl mt-5 w-96 text-center"
+          >
+            Scanne ton QR code pour enregistrer ta voiture !
+          </h3>
         </div>
       </main>
       <footer class="flex justify-between w-full p-10">
@@ -144,52 +149,78 @@
 
       // Fonction de dessin lorsque toutes les images sont chargées
       function onAllImagesLoaded() {
+        const scaleFactorx = 0.6; // Modifier cette valeur pour ajuster la taille
+        const scaleFactory = 1; // Modifier cette valeur pour ajuster la taille
+        const scaledWidth = canvas.width * scaleFactorx;
+        const scaledHeight = canvas.height * scaleFactory;
+        const offsetX = (canvas.width - scaledWidth) / 1.7; // Centrer horizontalement
+        const offsetY = (canvas.height - scaledHeight) / 2; // Centrer verticalement
+
         ctx.drawImage(images.bgImage, dx, dy, canvas.width, canvas.height);
         ctx.drawImage(
           images.PneuGaucheImage,
-          dx,
-          dy,
-          canvas.width,
-          canvas.height
+          offsetX,
+          offsetY,
+          scaledWidth,
+          scaledHeight
         );
         ctx.drawImage(
           images.BaseBackImage,
-          dx,
-          dy,
-          canvas.width,
-          canvas.height
+          offsetX,
+          offsetY,
+          scaledWidth,
+          scaledHeight
         );
-        ctx.drawImage(images.VolantImage, dx, dy, canvas.width, canvas.height);
+        ctx.drawImage(
+          images.VolantImage,
+          offsetX,
+          offsetY,
+          scaledWidth,
+          scaledHeight
+        );
         ctx.drawImage(
           images.AileronFrontImage,
-          dx,
-          dy,
-          canvas.width,
-          canvas.height
+          offsetX,
+          offsetY,
+          scaledWidth,
+          scaledHeight
         );
         ctx.drawImage(
           images.AileronBackImage,
-          dx,
-          dy,
-          canvas.width,
-          canvas.height
+          offsetX,
+          offsetY,
+          scaledWidth,
+          scaledHeight
         );
         ctx.drawImage(
           images.BaseFrontImage,
-          dx,
-          dy,
-          canvas.width,
-          canvas.height
+          offsetX,
+          offsetY,
+          scaledWidth,
+          scaledHeight
         );
-        ctx.drawImage(images.MotifImage, dx, dy, canvas.width, canvas.height);
+        ctx.drawImage(
+          images.MotifImage,
+          offsetX,
+          offsetY,
+          scaledWidth,
+          scaledHeight
+        );
         ctx.drawImage(
           images.PneuDroitImage,
-          dx,
-          dy,
-          canvas.width,
-          canvas.height
+          offsetX,
+          offsetY,
+          scaledWidth,
+          scaledHeight
         );
-        ctx.drawImage(images.JanteImage, dx, dy, canvas.width, canvas.height);
+        ctx.drawImage(
+          images.JanteImage,
+          offsetX,
+          offsetY,
+          scaledWidth,
+          scaledHeight
+        );
+
         saveCanvasToServer();
       }
 
